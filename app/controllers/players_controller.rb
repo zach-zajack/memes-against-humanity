@@ -11,8 +11,10 @@ class PlayersController < ApplicationController
       if @player.save
         session[:player_id] = @player.id
         @game.save
-        format.html { redirect_to @game }
-        format.json { render :show, status: :created, location: @game }
+        format.html { redirect_to game_path(@game.join_code) }
+        format.json do
+          render :show, status: :created, location: game_path(@game.join_code)
+        end
       else
         format.html { render :new }
         format.json do
