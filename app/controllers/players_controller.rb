@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
-        session[:player_id] = @player.id
+        cookies.signed[:player_id] = @player.id
         @game.save
         format.html { redirect_to game_path(@game.join_code) }
         format.json do
