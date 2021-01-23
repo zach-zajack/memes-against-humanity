@@ -6,6 +6,42 @@ class Game < ApplicationRecord
 
   before_create :generate_join_code
 
+  def start
+    update_attribute(:playing, true)
+    reset_score
+    advance_round
+  end
+
+  def stop
+    update_attribute(:playing, false)
+  end
+
+  def reset_score
+    players.each { |player| player.update_attribute(:score, 0) }
+  end
+
+  def advance_round
+    players.each(&:hide_played_sources)
+    deal_sources
+    Round.create(game: self, czar_id: czar.id)
+  end
+
+  def deal_sources
+    players.each do |player|
+      (self.source_count - player.visible_sources.count).times do
+        Source.create(player: player)
+      end
+    end
+  end
+
+  def master
+    players.first
+  end
+
+  def czar
+    players[rounds.count % players.count]
+  end
+
   def generate_join_code
     self.join_code = loop do
       code = Random.new.rand(1000..9999)
