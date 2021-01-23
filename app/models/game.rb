@@ -23,7 +23,7 @@ class Game < ApplicationRecord
   def advance_round
     players.each(&:hide_played_sources)
     deal_sources
-    Round.create(game: self, czar_id: czar.id)
+    Round.create(game: self)
   end
 
   def deal_sources
@@ -36,10 +36,6 @@ class Game < ApplicationRecord
 
   def master
     players.first
-  end
-
-  def czar
-    players[rounds.count % players.count]
   end
 
   def generate_join_code
