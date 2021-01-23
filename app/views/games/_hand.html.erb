@@ -1,0 +1,7 @@
+<% return unless @game.playing && current_player.present? %>
+
+<div class="hand">
+  <% current_player.sources.each do |source| %>
+    <%= image_tag(source.path, height: "100px") %>
+  <% end %>
+</div>
