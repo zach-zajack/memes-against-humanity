@@ -1,7 +1,5 @@
-<div class="home">
-  <h1>Memes Against Humanity</h1>
-  <%= form_for @player do |f| %>
-    <%= f.text_field :name, placeholder: "username" %><br/>
-    <%= f.submit "Create game" %>
-  <% end %>
-</div>
+<h1>Memes Against Humanity</h1>
+<%= form_for @player do |f| %>
+  <%= f.text_field :name, placeholder: "username" %><br/>
+  <%= f.submit "Create game" %>
+<% end %>

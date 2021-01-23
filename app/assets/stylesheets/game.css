@@ -1,0 +1,25 @@
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 320px;
+  bottom: 270px;
+  padding: 10px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 270px;
+  width: 300px;
+  padding: 10px;
+}
+
+.bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  padding: 10px;
+}
