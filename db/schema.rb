@@ -10,21 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_232211) do
+ActiveRecord::Schema.define(version: 2021_01_21_225210) do
 
   create_table "games", force: :cascade do |t|
     t.integer "join_code"
     t.boolean "playing", default: false
     t.integer "max_score", default: 10
+    t.integer "source_count", default: 7
     t.boolean "join_midgame", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "memes", force: :cascade do |t|
-    t.integer "player_id"
     t.integer "round_id"
-    t.string "path"
+    t.integer "source1_id"
+    t.integer "source2_id"
+    t.integer "source3_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,15 +52,14 @@ ActiveRecord::Schema.define(version: 2021_01_14_232211) do
   create_table "sources", force: :cascade do |t|
     t.integer "player_id"
     t.string "path"
-    t.integer "order", default: -1
-    t.boolean "hidden", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "templates", force: :cascade do |t|
     t.integer "round_id"
-    t.string "path"
+    t.string "base"
+    t.string "overlay"
     t.integer "slots"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

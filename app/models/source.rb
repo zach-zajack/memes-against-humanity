@@ -6,14 +6,6 @@ class Source < ApplicationRecord
 
   before_create :generate_source_path
 
-  def played?
-    self.order != -1
-  end
-
-  def hide
-    update_attribute(:hidden, true)
-  end
-
   private
 
   def generate_source_path
