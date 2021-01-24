@@ -1,0 +1,12 @@
+.base, .overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.source {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  background-color: white;
+}

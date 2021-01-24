@@ -2,6 +2,7 @@
   <div class="main">
     <%= render "options", game: @game %>
     <%= render @game.round.template if @game.playing %>
+    <%= render @game.memes %>
   </div>
 
   <div class="sidebar">

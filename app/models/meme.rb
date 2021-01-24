@@ -1,7 +1,8 @@
 class Meme < ApplicationRecord
   belongs_to :round
   belongs_to :player
-  delegate :game, to: :round
+  delegate :game,     to: :round
+  delegate :template, to: :round
 
   validates :source1_id, presence: true
 

@@ -1,0 +1,11 @@
+<div class="meme">
+  <%= image_tag(meme.template.base, class: "base") %>
+  <% meme.template.rects.each.with_index do |rect, i| %>
+    <% rect.each do |coords| %>
+      <%= tag.div(class: "placeholder", data: coords) do %>
+        <%= image_tag(meme.sources[i].path, class: "source") %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= image_tag(meme.template.overlay, class: "overlay") if meme.template.overlay? %>
+</div>

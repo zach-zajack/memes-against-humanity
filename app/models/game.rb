@@ -3,6 +3,7 @@ class Game < ApplicationRecord
   has_many :rounds,  dependent: :destroy
   has_many :templates, through: :rounds
   has_many :sources,   through: :players
+  has_many :memes,     through: :players
 
   before_create :generate_join_code
 
