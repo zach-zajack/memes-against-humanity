@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
 
   create_table "memes", force: :cascade do |t|
     t.integer "round_id"
+    t.integer "player_id"
     t.integer "source1_id"
     t.integer "source2_id"
     t.integer "source3_id"

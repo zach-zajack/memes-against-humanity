@@ -1,11 +1,9 @@
 class Meme < ApplicationRecord
   belongs_to :round
+  belongs_to :player
+  delegate :game, to: :round
 
-  validates_presence_of :source1_id
-
-  def author
-    self.source1_id.player
-  end
+  validates :source1_id, presence: true
 
   def sources
     [
