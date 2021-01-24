@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
 
   create_table "sources", force: :cascade do |t|
     t.integer "player_id"
-    t.string "path"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

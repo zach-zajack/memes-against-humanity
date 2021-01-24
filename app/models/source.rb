@@ -6,12 +6,16 @@ class Source < ApplicationRecord
 
   before_create :generate_source_path
 
+  def path
+    DOMAIN + DATA["sources"][self.name]
+  end
+
   private
 
   def generate_source_path
-    self.path = loop do
-      path = DOMAIN + DATA["sources"].values.shuffle.first
-      break path unless game.sources.any? { |source| source.path == path }
+    self.name = loop do
+      name = DATA["sources"].keys.shuffle.first
+      break name if game.sources.none? { |source| source.name == name }
     end
   end
 end
