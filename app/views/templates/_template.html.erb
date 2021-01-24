@@ -1,0 +1,12 @@
+<div class="template">
+  <%= image_tag(template.base, class: "base") %>
+  <% template.rects.each.with_index(1) do |rect, i| %>
+    <% rect.each do |coords| %>
+      <%= tag.div(class: "placeholder", data: coords) do %>
+        <%= image_tag("checker.png", class: "checker") %>
+        <%= image_tag("#{i}.png", class: "number") %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= image_tag(template.overlay, class: "overlay") if template.overlay? %>
+</div>

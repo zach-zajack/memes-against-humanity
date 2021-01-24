@@ -1,6 +1,7 @@
 <div id="game">
   <div class="main">
     <%= render "options", game: @game %>
+    <%= render @game.round.template if @game.playing %>
   </div>
 
   <div class="sidebar">
