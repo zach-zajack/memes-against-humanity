@@ -5,10 +5,11 @@ App.game = App.cable.subscriptions.create "GameChannel",
   disconnected: ->
     # Called when the subscription has been terminated by the server
 
-  received: (data) ->
+  received: (partials) ->
+    for partial_name, content of partials
+      $("#" + partial_name).html(content)
 
   play_sources: (source_ids) ->
-    console.log(source_ids)
     @perform "play_sources", source_ids: source_ids
 
   select_meme: (meme_id) ->
