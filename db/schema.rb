@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
 
   create_table "sources", force: :cascade do |t|
     t.integer "player_id"
-    t.string "name"
+    t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "templates", force: :cascade do |t|
     t.integer "round_id"
-    t.string "name"
+    t.string "key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

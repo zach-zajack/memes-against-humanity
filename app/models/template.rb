@@ -1,25 +1,23 @@
 class Template < ApplicationRecord
-  include ShitpostData
-
   belongs_to :round
   delegate :game, to: :round
 
   before_create :generate_template_data
 
   def data
-    DATA["templates"][self.name]
+    DATA[self.key]
   end
 
   def base
-    DOMAIN + data["template"]
+    ROOT + data["base"]
   end
 
-  def use_overlay?
-    data.key?("overlay")
+  def overlay?
+    data["overlay"].present?
   end
 
   def overlay
-    DOMAIN + data["overlay"] if use_overlay?
+    ROOT + data["overlay"] if overlay?
   end
 
   def rects
@@ -32,10 +30,14 @@ class Template < ApplicationRecord
 
   private
 
+  ROOT = "https://www.shitpostbot.com/img/templates/"
+  DATA = JSON.parse(File.open("public/templates.json").read)
+
   def generate_template_data
-    self.name = loop do
-      name = DATA["templates"].keys.shuffle.first
-      break name if game.templates.none? { |template| template.name == name }
+    self.key = loop do
+      index = Random.new.rand(0...DATA.length)
+      key = DATA.keys[index]
+      break key if game.templates.none? { |template| template.key == key }
     end
   end
 end
