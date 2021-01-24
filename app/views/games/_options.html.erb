@@ -1,15 +1,15 @@
-<% return if @game.playing || !current_player&.master? %>
+<% return if game.playing || !current_player&.master? %>
 
 <div class="options">
-  <%= form_with url: start_game_path(@game.join_code) do |f| %>
+  <%= form_with url: start_game_path(game.join_code) do |f| %>
     <%= f.label :max_score, "Max score" %>
-    <%= f.number_field :max_score, value: @game.max_score, min: 3, max: 20 %>
+    <%= f.number_field :max_score, value: game.max_score, min: 3, max: 20 %>
     <br/>
     <%= f.label :source_count, "Source count" %>
-    <%= f.number_field :source_count, value: @game.source_count, min: 5, max: 10 %>
+    <%= f.number_field :source_count, value: game.source_count, min: 5, max: 10 %>
     <br/>
     <%= f.label :join_midgame, "Allow joining mid-game" %>
-    <%= f.check_box :join_midgame, checked: @game.join_midgame %>
+    <%= f.check_box :join_midgame, checked: game.join_midgame %>
     <br/>
     <%= f.submit "Start" %>
   <% end %>

@@ -1,13 +1,13 @@
 <div id="game">
   <div class="main">
-    <%= render "options" %>
+    <%= render "options", game: @game %>
   </div>
 
   <div class="sidebar">
-    <%= render "sidebar" %>
+    <%= render "scoreboard", game: @game %>
   </div>
 
   <div class="bottom">
-    <%= render "hand" %>
+    <%= render "hand", game: @game %>
   </div>
 </div>

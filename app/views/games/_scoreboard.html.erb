@@ -1,0 +1,11 @@
+<div id="scoreboard">
+  Players
+  <table>
+    <% game.players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td><%= player.score %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
