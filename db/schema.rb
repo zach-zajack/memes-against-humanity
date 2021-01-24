@@ -59,9 +59,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
 
   create_table "templates", force: :cascade do |t|
     t.integer "round_id"
-    t.string "base"
-    t.string "overlay"
-    t.integer "slots"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

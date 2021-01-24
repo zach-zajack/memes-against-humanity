@@ -5,6 +5,7 @@ class Round < ApplicationRecord
   delegate   :players, to: :game
 
   before_create :pick_czar
+  before_create :generate_template
 
   def czar
     Player.find(czar_id)
@@ -14,5 +15,9 @@ class Round < ApplicationRecord
 
   def pick_czar
     self.czar_id = players[game.rounds.count % players.count].id
+  end
+
+  def generate_template
+    self.template = Template.create
   end
 end
