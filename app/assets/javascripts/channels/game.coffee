@@ -1,8 +1,4 @@
-App.game = App.cable.subscriptions.create {
-    channel: "GameChannel",
-    join_code: window.location.pathname.substr(7) # /games/:join_code
-  },
-
+App.game = App.cable.subscriptions.create "GameChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 
