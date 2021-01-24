@@ -11,11 +11,12 @@ App.game = App.cable.subscriptions.create {
 
   received: (data) ->
 
-  play_source: (data) ->
-    @perform "play_source", source_id: data
+  play_sources: (source_ids) ->
+    console.log(source_ids)
+    @perform "play_sources", source_ids: source_ids
 
-  select_meme: (data) ->
-    @perform "select_meme", meme_id: data
+  select_meme: (meme_id) ->
+    @perform "select_meme", meme_id: meme_id
 
-  message: (data) ->
-    @perform "message", content: data
+  message: (content) ->
+    @perform "message", content: content

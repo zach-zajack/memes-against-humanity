@@ -9,12 +9,18 @@ class GameChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def play_source
+  def play_sources(data)
+    Meme.create!(
+      round_id: @game.round.id,
+      source1_id: data["source_ids"][0],
+      source2_id: data["source_ids"][1],
+      source3_id: data["source_ids"][2]
+    )
   end
 
-  def select_meme
+  def select_meme(data)
   end
 
-  def message
+  def message(data)
   end
 end

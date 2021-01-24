@@ -1,7 +1,9 @@
 <% return unless @game.playing && current_player.present? %>
 
+<button onclick="playHand()">Play Hand</button>
+
 <div class="hand">
   <% current_player.sources.each do |source| %>
-    <%= image_tag(source.path, height: "100px") %>
+    <%= image_tag(source.path, "data-sourceid": source.id, height: "100px") %>
   <% end %>
 </div>
