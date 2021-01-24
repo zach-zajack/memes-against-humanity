@@ -2,15 +2,10 @@ class GamesController < ApplicationController
   before_action :game_initialize
 
   def start
-    if @game.update(game_params)
-      @game.start
-    else
-      render :show
-    end
+    @game.start if @game.update(game_params)
   end
 
   def show
-
   end
 
   private
