@@ -1,15 +1,15 @@
 <div id="game">
   <div class="main">
-    <%= render "options", game: @game %>
-    <%= render @game.round.template if @game.playing %>
-    <%= render @game.memes %>
+    <div id="options"><%= render "options", game: @game %></div>
+    <div id="template"><%= render "template", game: @game if @game.playing %></div>
+    <div id="memes"><%= render "memes", game: @game %></div>
   </div>
 
   <div class="sidebar">
-    <%= render "scoreboard", game: @game %>
+    <div id="scoreboard"><%= render "scoreboard", game: @game %></div>
   </div>
 
   <div class="bottom">
-    <%= render "hand", game: @game %>
+    <div id="hand"><%= render "hand", game: @game %></div>
   </div>
 </div>
