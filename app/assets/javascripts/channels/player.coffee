@@ -8,3 +8,4 @@ App.player = App.cable.subscriptions.create "PlayerChannel",
   received: (partials) ->
     for partial_name, content of partials
       $("#" + partial_name).html(content)
+    initGame()
