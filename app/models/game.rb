@@ -8,7 +8,6 @@ class Game < ApplicationRecord
   before_create :generate_join_code
 
   def start
-    update_attribute(:playing, true)
     reset_score
     advance_round
   end

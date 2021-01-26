@@ -1,11 +1,13 @@
 class PlayersController < ApplicationController
+  before_action :check_games
+
   def new
     @player = Player.new
   end
 
   def create
-    @game ||= Game.new
-    @player = Player.new(player_params.merge(game: @game))
+    #@game ||= Game.new
+    @player = Player.new(name: params[:name], game: @game)
     if @player.save
       cookies.signed[:player_id] = @player.id
       @game.save
@@ -15,9 +17,14 @@ class PlayersController < ApplicationController
     end
   end
 
+  def create_game
+    @game = Game.new
+    create
+  end
+
   private
 
-  def player_params
-    params.require(:player).permit(:name)
+  def check_games
+    @game = Game.find_by(join_code: params[:join_code])
   end
 end
