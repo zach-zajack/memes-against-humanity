@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    render :new_player if current_player.nil?
   end
 
   private

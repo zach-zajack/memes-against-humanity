@@ -1,6 +1,0 @@
-<% return if current_player.present? %>
-
-<%= form_with url: players_path(game.join_code) do |f| %>
-  <%= f.text_field :name, placeholder: "username" %><br/>
-  <%= f.submit "Join game" %>
-<% end %>

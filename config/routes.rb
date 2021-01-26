@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :games, param: :join_code, only: :show do
     member do
-      resources :players, only: [:new, :create, :destroy]
+      resources :players, only: [:create, :destroy]
       post "start"
     end
   end

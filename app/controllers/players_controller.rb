@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    #@game ||= Game.new
+    # TODO: handle nil games for players browsing public games
     @player = Player.new(name: params[:name], game: @game)
     if @player.save
       cookies.signed[:player_id] = @player.id
