@@ -1,4 +1,4 @@
-<% return if game.playing || !current_player&.master? %>
+<% return if game.playing || !current_player.master? %>
 
 <%= form_with url: start_game_path(game.join_code) do |f| %>
   <%= f.label :max_score, "Max score" %>

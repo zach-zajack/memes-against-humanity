@@ -1,6 +1,7 @@
 class BroadcastGameJob < ApplicationJob
   queue_as :default
 
+  def perform(game, *partials)
     game.players.each do |player|
       PlayerChannel.broadcast_to(player, render_partials(player, partials))
     end
