@@ -42,7 +42,7 @@ function resizeHand() {
 }
 
 function playHand() {
-  App.game.play_sources($(".hand img.selected").map(function() {
+  App.player.play_sources($(".hand img.selected").map(function() {
     return parseInt($(this).attr("data-sourceid"));
   }).get());
 }
