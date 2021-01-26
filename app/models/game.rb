@@ -7,6 +7,8 @@ class Game < ApplicationRecord
 
   before_create :generate_join_code
 
+  validate :player_minimum_reached
+
   def start
     reset_score
     advance_round
@@ -41,10 +43,18 @@ class Game < ApplicationRecord
     players.first
   end
 
+  private
+
   def generate_join_code
     self.join_code = loop do
       code = Random.new.rand(1000..9999)
       break code unless Game.exists?(join_code: code)
+    end
+  end
+
+  def player_minimum_reached
+    if self.playing && self.players.count < 3
+      errors.add(:base, "not enough players")
     end
   end
 end
