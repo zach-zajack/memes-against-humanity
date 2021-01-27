@@ -22,5 +22,13 @@ class GamesController < ApplicationController
 
   def game_initialize
     @game = Game.find_by(join_code: params[:join_code]) or record_not_found
+    return if current_player&.game == @game
+    current_player&.destroy
+    cookies.delete(:player_id)
+    if @game&.persisted?
+      render :new_player
+    else
+      redirect_to root_url
+    end
   end
 end
