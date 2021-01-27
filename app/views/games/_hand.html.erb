@@ -3,7 +3,9 @@
 <button onclick="playHand()">Play Hand</button>
 
 <div class="hand">
-  <% current_player.sources.each do |source| %>
-    <%= image_tag(source.path, "data-sourceid": source.id, height: "100px") %>
-  <% end %>
+  <div class="hand-resize">
+    <% current_player.sources.each do |source| %>
+      <%= image_tag(source.path, "data-sourceid": source.id, height: "80px") %>
+    <% end %>
+  </div>
 </div>

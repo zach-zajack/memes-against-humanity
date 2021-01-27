@@ -7,6 +7,7 @@ function initTemplate() {
   $(".template img").off();
 
   $(".template img").on("load", function() {
+    resizeGame();
     $(".placeholder").map(function() {
       $(this).css("top",    $(this).attr("data-y") + "px");
       $(this).css("left",   $(this).attr("data-x") + "px");
@@ -22,7 +23,7 @@ function initHand() {
   $(".hand img").off();
 
   $(".hand img").on("load", function() {
-    resizeHand();
+    resizeGame();
   }).each(function() {
     if(this.complete) $(this).trigger("load");
   });
@@ -36,9 +37,17 @@ function initHand() {
   });
 }
 
-function resizeHand() {
-  var scale = $(".bottom").width() / $(".hand").width();
-  $(".hand").css({transform: "scale("+scale+")"});
+function resizeGame() {
+  var scaleHand = $(this).width() / $(".hand-resize").width();
+  $(".hand-resize").css({transform: "scale("+scaleHand+") translateY(-"+scaleHand+"%)"});
+  var bottomHeight = $(".hand-resize").height() * scaleHand + 20;
+  $(".bottom").height(bottomHeight);
+
+  var mainHeight = $(this).height() - bottomHeight;
+  $(".main").height($(this).height() - bottomHeight);
+  var scaleTemplate = (mainHeight - 30) / $(".template img").height();
+  $(".template").css({transform: "scale("+scaleTemplate+")"});
+  $(".meme").css({transform: "scale("+scaleTemplate+")"}); // TODO: replace
 }
 
 function playHand() {
@@ -47,6 +56,6 @@ function playHand() {
   }).get());
 }
 
-$(window).on("resize", resizeHand);
+$(window).on("resize", resizeGame);
 
 $(() => { initGame(); });

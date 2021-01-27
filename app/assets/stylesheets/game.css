@@ -26,14 +26,23 @@
 }
 
 .hand {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20px;
+  padding-bottom: 80px;
+}
+
+.hand-resize {
   white-space: nowrap;
   display: table;
   margin: auto;
-  margin-top: 80px;
+  padding-bottom: 60px;
 }
 
 .hand img {
-  margin: 5px;
+  margin: 1px;
   transition: 0.2s;
 }
 
@@ -42,5 +51,5 @@
 }
 
 .hand .selected {
-  box-shadow: 0px 12px 22px 1px #333;
+  box-shadow: 0px 5px 10px 1px #111;
 }
