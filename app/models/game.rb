@@ -36,7 +36,7 @@ class Game < ApplicationRecord
   end
 
   def round
-    rounds.first
+    rounds.last
   end
 
   def master
