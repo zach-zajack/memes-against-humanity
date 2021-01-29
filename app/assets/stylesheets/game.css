@@ -25,6 +25,28 @@
   padding: 10px;
 }
 
+.scoreboard span::after {
+  position: absolute;
+  transform: translateX(5px) translateY(2px);
+  font-size: 14px;
+}
+
+.scoreboard span.czar::after {
+  content: "[CZAR]";
+}
+
+.scoreboard .playing::after {
+  content: "[PLAYING]";
+}
+
+.scoreboard span.winner::after {
+  content: "Winner!";
+}
+
+.scoreboard td:nth-child(1) {
+  width: 200px;
+}
+
 .hand {
   position: fixed;
   left: 0;

@@ -1,9 +1,11 @@
-Players
-<table>
-  <% game.players.each do |player| %>
-    <tr>
-      <td><%= player.name %></td>
-      <td><%= player.score %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="scoreboard">
+  Players
+  <table>
+    <% game.players.each do |player| %>
+      <tr>
+        <td><span class="<%= player_classes(player) %>"><%= player.name %></td>
+        <td><%= player.score %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
