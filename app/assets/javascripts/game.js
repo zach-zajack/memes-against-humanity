@@ -1,12 +1,13 @@
 function initGame() {
   initHand();
-  initTemplate();
+  initMeme();
 }
 
-function initTemplate() {
-  $(".template img").off();
+function initMeme() {
+  $(".meme img").off();
 
   $(".template img").on("load", function() {
+  $(".meme img").on("load", function() {
     resizeGame();
     $(".placeholder").map(function() {
       $(this).css("top",    $(this).attr("data-y") + "px");

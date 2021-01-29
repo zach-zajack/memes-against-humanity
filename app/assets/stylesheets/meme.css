@@ -3,6 +3,23 @@
   inset: 0;
 }
 
+.placeholder {
+  position: absolute;
+}
+
+.placeholder .checker {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.placeholder .number {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .source {
   position: absolute;
   height: 100%;
