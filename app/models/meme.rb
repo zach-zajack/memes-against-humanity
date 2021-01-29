@@ -23,7 +23,7 @@ class Meme < ApplicationRecord
   private
 
   def broadcast_meme
-    BroadcastGameJob.perform_later(game, "memes", "scoreboard")
+    BroadcastGameJob.perform_later(game, "template", "memes", "scoreboard")
   end
 
   def source_count_matches_template
