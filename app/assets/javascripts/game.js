@@ -6,7 +6,6 @@ function initGame() {
 function initMeme() {
   $(".meme img").off();
 
-  $(".template img").on("load", function() {
   $(".meme img").on("load", function() {
     resizeGame();
     $(".placeholder").map(function() {
@@ -39,16 +38,25 @@ function initHand() {
 }
 
 function resizeGame() {
-  var scaleHand = $(this).width() / $(".hand-resize").width();
-  $(".hand-resize").css({transform: "scale("+scaleHand+") translateY(-"+scaleHand+"%)"});
+  var scaleHand = ($(this).width() - 10) / $(".hand-resize").width();
+  $(".hand-resize").css({transform: "scale("+scaleHand+")"});
+
+  // Add 20px for the button
   var bottomHeight = $(".hand-resize").height() * scaleHand + 20;
   $(".bottom").height(bottomHeight);
 
   var mainHeight = $(this).height() - bottomHeight;
   $(".main").height($(this).height() - bottomHeight);
-  var scaleTemplate = (mainHeight - 30) / $(".template img").height();
-  $(".template").css({transform: "scale("+scaleTemplate+")"});
-  $(".meme").css({transform: "scale("+scaleTemplate+")"}); // TODO: replace
+
+  var templateHeightRatio = (mainHeight - 30) / $("#template").height();
+  var templateWidthRatio = $(".main").width() / $("#template").width();
+  var scaleTemplate = Math.min(templateHeightRatio, templateWidthRatio);
+  $("#template").css({transform: "scale("+scaleTemplate+")"});
+
+  var memeHeightRatio = (mainHeight - 30) / $("#memes").height();
+  var memeWidthRatio = $(".main").width() / $("#memes").width();
+  var scaleMeme = Math.min(memeHeightRatio, memeWidthRatio);
+  $("#memes").css({transform: "scale("+scaleMeme+")"});
 }
 
 function playHand() {

@@ -1,6 +1,21 @@
+#memes, #template {
+  position: relative;
+  transform-origin: top left;
+  display: table;
+}
+
+.meme {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+}
+
 .base, .overlay {
-  position: absolute;
   inset: 0;
+}
+
+.overlay {
+  position: absolute;
 }
 
 .placeholder {
