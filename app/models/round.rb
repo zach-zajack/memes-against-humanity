@@ -9,7 +9,11 @@ class Round < ApplicationRecord
   after_create_commit :broadcast_round
 
   def czar
-    Player.find(czar_id)
+    Player.find_by(id: czar_id)
+  end
+
+  def winner
+    Player.find_by(id: winner_id)
   end
 
   private
