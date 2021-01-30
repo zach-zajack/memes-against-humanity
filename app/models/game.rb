@@ -10,6 +10,7 @@ class Game < ApplicationRecord
   validate :player_minimum_reached
 
   def start
+    PlayerChannel.broadcast_to(master, options: "")
     reset_score
     advance_round
   end
