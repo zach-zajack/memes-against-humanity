@@ -1,2 +1,2 @@
-<% return unless game.playing && current_player.playing? %>
+<% return unless game.playing && display_template?(current_player) %>
 <%= render game.round.template %>

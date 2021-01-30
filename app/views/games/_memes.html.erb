@@ -1,2 +1,2 @@
-<% return unless game.playing && current_player.ready? %>
+<% return unless game.playing && display_meme?(current_player) %>
 <%= render game.memes %>
