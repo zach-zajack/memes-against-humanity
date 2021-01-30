@@ -1,16 +1,14 @@
 function initGame() {
-  initHand();
-  initMeme();
+  bindImageFunction($(".hand img"), resizeGame);
+  bindImageFunction($(".meme img"), makeTemplateMeme);
+  bindImageFunction($(".template img"), makeTemplateMeme);
+
+  $(".hand img").click(makeSelectable);
 }
 
-function initMeme() {
-  $(".meme img").off();
-  $(".meme img").on("load", makeTemplateMeme).each(function() {
-    if(this.complete) $(this).trigger("load");
-  });
-
-  $(".template img").off();
-  $(".template img").on("load", makeTemplateMeme).each(function() {
+function bindImageFunction(el, fun) {
+  el.off();
+  el.on("load", fun).each(function() {
     if(this.complete) $(this).trigger("load");
   });
 }
@@ -25,34 +23,24 @@ function makeTemplateMeme() {
   });
 }
 
-function initHand() {
-  $(".hand img").off();
-
-  $(".hand img").on("load", function() {
-    resizeGame();
-  }).each(function() {
-    if(this.complete) $(this).trigger("load");
-  });
-
-  $(".hand img").click(function() {
-    if($(this).hasClass("selected")) {
-      $(this).removeClass("selected");
-    } else {
-      $(this).addClass("selected");
-    }
-  });
+function makeSelectable() {
+  if($(this).hasClass("selected")) {
+    $(this).removeClass("selected");
+  } else {
+    $(this).addClass("selected");
+  }
 }
 
 function resizeGame() {
-  var scaleHand = ($(this).width() - 10) / $(".hand-resize").width();
+  var scaleHand = (window.innerWidth - 10) / $(".hand-resize").width();
   $(".hand-resize").css({transform: "scale("+scaleHand+")"});
 
   // Add 20px for the button
   var bottomHeight = $(".hand-resize").height() * scaleHand + 20;
   $(".bottom").height(bottomHeight);
 
-  var mainHeight = $(this).height() - bottomHeight;
-  $(".main").height($(this).height() - bottomHeight);
+  var mainHeight = window.innerHeight - bottomHeight;
+  $(".main").height(window.innerHeight - bottomHeight);
 
   var templateHeightRatio = (mainHeight - 30) / $("#template").height();
   var templateWidthRatio = $(".main").width() / $("#template").width();
