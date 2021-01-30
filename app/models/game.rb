@@ -23,6 +23,10 @@ class Game < ApplicationRecord
     players.each { |player| player.update_attribute(:score, 0) }
   end
 
+  def advance
+    anyone_win? ? stop : advance_round
+  end
+
   def advance_round
     deal_sources
     Round.create(game: self)
@@ -34,6 +38,10 @@ class Game < ApplicationRecord
         Source.create(player: player)
       end
     end
+  end
+
+  def anyone_win?
+    players.any? { |player| player.score >= self.max_score }
   end
 
   def round

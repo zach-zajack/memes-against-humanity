@@ -4,6 +4,7 @@ function initGame() {
   bindImageFunction($(".template img"), makeTemplateMeme);
 
   $(".hand img").click(makeSelectable);
+  $(".meme").click(selectMeme);
 }
 
 function bindImageFunction(el, fun) {
@@ -57,6 +58,11 @@ function playHand() {
   App.player.play_sources($(".hand img.selected").map(function() {
     return parseInt($(this).data("source-id"));
   }).get());
+}
+
+function selectMeme() {
+  var meme = parseInt($(this).data("meme-id"));
+  App.player.select_meme(meme);
 }
 
 $(window).on("resize", resizeGame);

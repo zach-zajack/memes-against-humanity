@@ -21,6 +21,11 @@ class Meme < ApplicationRecord
     [self.source1_id, self.source2_id, self.source3_id].compact
   end
 
+  def select_winner
+    player.increment!(:score)
+    game.advance
+  end
+
   private
 
   def broadcast_meme

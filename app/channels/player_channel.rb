@@ -19,6 +19,8 @@ class PlayerChannel < ApplicationCable::Channel
   end
 
   def select_meme(data)
+    meme = Meme.find(data["meme_id"])
+    meme.select_winner
   end
 
   def message(data)
