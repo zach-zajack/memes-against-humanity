@@ -32,22 +32,22 @@ function makeSelectable() {
 }
 
 function resizeGame() {
+  // Subtract 10px for padding
   var scaleHand = (window.innerWidth - 10) / $(".hand-resize").width();
   $(".hand-resize").css({transform: "scale("+scaleHand+")"});
 
   // Add 20px for the button
-  var bottomHeight = $(".hand-resize").height() * scaleHand + 20;
-  $(".bottom").height(bottomHeight);
+  $(".bottom").height($(".hand-resize").height() * scaleHand + 20);
 
-  var mainHeight = window.innerHeight - bottomHeight;
-  $(".main").height(window.innerHeight - bottomHeight);
+  // Subtract 30px for padding
+  $(".main").height(window.innerHeight - $(".bottom").height() - 30);
 
-  var templateHeightRatio = (mainHeight - 30) / $("#template").height();
+  var templateHeightRatio = $(".main").height() / $("#template").height();
   var templateWidthRatio = $(".main").width() / $("#template").width();
   var scaleTemplate = Math.min(templateHeightRatio, templateWidthRatio);
   $("#template").css({transform: "scale("+scaleTemplate+")"});
 
-  var memeHeightRatio = (mainHeight - 30) / $("#memes").height();
+  var memeHeightRatio = $(".main").height() / $("#memes").height();
   var memeWidthRatio = $(".main").width() / $("#memes").width();
   var scaleMeme = Math.min(memeHeightRatio, memeWidthRatio);
   $("#memes").css({transform: "scale("+scaleMeme+")"});
@@ -55,7 +55,7 @@ function resizeGame() {
 
 function playHand() {
   App.player.play_sources($(".hand img.selected").map(function() {
-    return parseInt($(this).attr("data-sourceid"));
+    return parseInt($(this).data("source-id"));
   }).get());
 }
 
