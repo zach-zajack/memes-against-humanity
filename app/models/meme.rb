@@ -5,6 +5,7 @@ class Meme < ApplicationRecord
   delegate :template, to: :round
 
   validate :source_count_matches_template
+  validate :player_submitted_once
 
   after_create_commit :broadcast_meme
 
@@ -31,6 +32,12 @@ class Meme < ApplicationRecord
       errors.add(:base, "not enough sources")
     elsif source_ids.count > template.slots
       errors.add(:base, "too many sources")
+    end
+  end
+
+  def player_submitted_once
+    if player.ready?
+      errors.add(:base, "player has already submitted")
     end
   end
 end
