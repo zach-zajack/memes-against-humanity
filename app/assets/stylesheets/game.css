@@ -56,11 +56,19 @@
   padding-bottom: 60px;
 }
 
-.hand-resize {
-  white-space: nowrap;
-  display: table;
-  margin: auto;
-  transform-origin: bottom;
+.noclick .hand {
+  filter:         grayscale(90%);
+  -webkit-filter: grayscale(90%);
+}
+
+.czar-hand::after {
+  position: absolute;
+  inset: 0;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  content: "You are the Czar. When everyone is ready, select the best meme.";
+  padding-top: 7.5%;
 }
 
 .hand img {
@@ -74,6 +82,13 @@
   transform-origin: bottom;
 }
 
-.hand .selected {
+.hand-resize {
+  white-space: nowrap;
+  display: table;
+  margin: auto;
+  transform-origin: bottom;
+}
+
+.selected {
   box-shadow: 0px 5px 10px 1px #111;
 }
