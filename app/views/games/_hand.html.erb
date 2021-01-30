@@ -5,7 +5,7 @@
 
   <div class="hand">
     <div class="hand-resize">
-      <% current_player.sources.each do |source| %>
+      <% current_player.active_sources.each do |source| %>
         <%= image_tag(source.path, height: "80px", data: {source_id: source.id}) %>
       <% end %>
     </div>

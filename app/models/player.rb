@@ -7,6 +7,14 @@ class Player < ApplicationRecord
   after_create_commit :broadcast_player
   after_destroy_commit { game.revalidate }
 
+  def discard_played_sources
+    memes.last&.sources&.each { |source| source.discard }
+  end
+
+  def active_sources
+    sources.reject(&:discarded)
+  end
+
   def master?
     game.master == self
   end

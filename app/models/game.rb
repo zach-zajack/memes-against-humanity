@@ -28,13 +28,14 @@ class Game < ApplicationRecord
   end
 
   def advance_round
+    players.excluding(round&.czar).each(&:discard_played_sources)
     deal_sources
     Round.create(game: self)
   end
 
   def deal_sources
     players.each do |player|
-      (self.source_count - player.sources.count).times do
+      (self.source_count - player.active_sources.count).times do
         Source.create(player: player)
       end
     end

@@ -4,6 +4,10 @@ class Source < ApplicationRecord
 
   before_create :generate_source_path
 
+  def discard
+    update_attribute(:discarded, true)
+  end
+
   private
 
   ROOT = "https://www.shitpostbot.com/img/sourceimages/"
