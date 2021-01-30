@@ -5,17 +5,23 @@ function initGame() {
 
 function initMeme() {
   $(".meme img").off();
-
-  $(".meme img").on("load", function() {
-    resizeGame();
-    $(".placeholder").map(function() {
-      $(this).css("top",    $(this).attr("data-y") + "px");
-      $(this).css("left",   $(this).attr("data-x") + "px");
-      $(this).css("height", $(this).attr("data-height") + "px");
-      $(this).css("width",  $(this).attr("data-width") + "px");
-    });
-  }).each(function() {
+  $(".meme img").on("load", makeTemplateMeme).each(function() {
     if(this.complete) $(this).trigger("load");
+  });
+
+  $(".template img").off();
+  $(".template img").on("load", makeTemplateMeme).each(function() {
+    if(this.complete) $(this).trigger("load");
+  });
+}
+
+function makeTemplateMeme() {
+  resizeGame();
+  $(".placeholder").map(function() {
+    $(this).css("top",    $(this).attr("data-y") + "px");
+    $(this).css("left",   $(this).attr("data-x") + "px");
+    $(this).css("height", $(this).attr("data-height") + "px");
+    $(this).css("width",  $(this).attr("data-width") + "px");
   });
 }
 
