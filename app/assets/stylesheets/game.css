@@ -47,6 +47,12 @@
   width: 200px;
 }
 
+.waiting {
+  padding-top: 15vh;
+  text-align: center;
+  width: 800px;
+}
+
 .hand {
   position: fixed;
   left: 0;

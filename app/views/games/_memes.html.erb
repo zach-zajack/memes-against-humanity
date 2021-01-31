@@ -1,2 +1,6 @@
-<% return unless game.playing && display_meme?(current_player) %>
-<%= render game.memes %>
+<% return unless game.playing && display_memes?(current_player) %>
+<% if game.active_players.all?(&:ready?) %>
+  <%= render game.round.memes.shuffle %>
+<% else %>
+  <div class="waiting">Waiting for other players...</div>
+<% end %>

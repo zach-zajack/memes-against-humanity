@@ -12,11 +12,11 @@ module GamesHelper
     return ""
   end
 
-  def display_meme?(player)
+  def display_memes?(player)
     player.ready? || player.czar?
   end
 
   def display_template?(player)
-    !display_meme?(player)
+    !display_memes?(player)
   end
 end

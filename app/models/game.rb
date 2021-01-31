@@ -28,7 +28,7 @@ class Game < ApplicationRecord
   end
 
   def advance_round
-    players.excluding(round&.czar).each(&:discard_played_sources)
+    active_players.each(&:discard_played_sources)
     deal_sources
     Round.create(game: self)
   end
@@ -51,6 +51,15 @@ class Game < ApplicationRecord
 
   def master
     players.first
+  end
+
+  def active_players
+    players.excluding(round&.czar)
+  end
+
+  def revalidate
+    players.reload
+    stop unless self.valid?
   end
 
   private
