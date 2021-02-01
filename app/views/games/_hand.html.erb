@@ -1,15 +1,11 @@
 <% return unless game.playing %>
 
 <%= tag.div(class: hand_classes(current_player)) do %>
-  <%= button_tag("Play Hand", onclick: "playHand()", disabled: display_memes?(current_player)) %>
-
   <div class="hand">
     <div class="hand-resize">
       <% current_player.active_sources.each do |source| %>
-        <div class="hand-img-container">
-          <div class="hand-img">
-            <%= image_tag(source.path, height: "80px", data: {source_id: source.id}) %>
-          </div>
+        <div class="hand-img">
+          <%= image_tag(source.path, height: "80px", data: {source_id: source.id}) %>
         </div>
       <% end %>
     </div>

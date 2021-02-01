@@ -84,6 +84,8 @@
 }
 
 .hand-img {
+  position: relative;
+  display: inline-block;
   transition: 0.2s;
 }
 
@@ -98,11 +100,6 @@
   display: table;
   margin: auto;
   transform-origin: bottom;
-}
-
-.hand-img-container {
-  position: relative;
-  display: inline-block;
 }
 
 .source1::before, .source2::before, .source3::before {
