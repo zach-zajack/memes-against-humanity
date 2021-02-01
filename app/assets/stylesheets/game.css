@@ -53,6 +53,12 @@
   width: 800px;
 }
 
+#chatbox {
+  position: absolute;
+  bottom: 50px;
+  width: calc(100% - 32px);
+  padding: 4px;
+}
 .hand {
   position: fixed;
   left: 0;

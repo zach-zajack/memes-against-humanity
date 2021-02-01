@@ -24,5 +24,6 @@ class PlayerChannel < ApplicationCable::Channel
   end
 
   def message(data)
+    Message.create!(player_id: current_player.id, content: data["content"])
   end
 end

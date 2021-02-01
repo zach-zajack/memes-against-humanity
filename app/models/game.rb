@@ -4,6 +4,7 @@ class Game < ApplicationRecord
   has_many :templates, through: :rounds
   has_many :sources,   through: :players
   has_many :memes,     through: :players
+  has_many :messages,  through: :players
 
   before_create :generate_join_code
 

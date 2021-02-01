@@ -5,6 +5,7 @@ function initGame() {
 
   $(".hand-img").click(selectSource);
   $(".meme").click(selectMeme);
+  $("#chatbox").keypress(sendMessage);
 }
 
 function bindImageFunction(el, fun) {
@@ -63,6 +64,14 @@ function selectSource() {
 function selectMeme() {
   var meme = parseInt($(this).data("meme-id"));
   App.player.select_meme(meme);
+}
+
+function sendMessage(event) {
+  if(event.keyCode == 13) {
+    App.player.message(event.target.value);
+    event.target.value = "";
+    event.preventDefault();
+  }
 }
 
 $(window).on("resize", resizeGame);
