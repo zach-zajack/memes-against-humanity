@@ -40,7 +40,7 @@
 }
 
 .scoreboard span.winner::after {
-  content: "Winner!";
+  content: "[WINNER]";
 }
 
 .scoreboard td:nth-child(1) {
@@ -59,13 +59,21 @@
   width: calc(100% - 32px);
   padding: 4px;
 }
+
+.buttons button {
+  position: absolute;
+  bottom: 15px;
+  height: 30px;
+  width: calc(100% - 20px);
+}
+
 .hand {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   height: 20px;
-  padding-bottom: 60px;
+  padding-bottom: 64px;
 }
 
 .noclick .hand {
@@ -80,7 +88,7 @@
   background: rgba(0, 0, 0, 0.7);
   text-align: center;
   content: "You are the Czar. When everyone is ready, select the best meme.";
-  padding-top: 7.5%;
+  padding-top: 6%;
 }
 
 .hand img {

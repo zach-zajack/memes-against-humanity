@@ -1,6 +1,6 @@
 <% return unless game.playing %>
 
-<%= tag.div(class: hand_classes(current_player)) do %>
+<%= tag.div(class: "hand-container " + hand_classes(current_player)) do %>
   <div class="hand">
     <div class="hand-resize">
       <% current_player.active_sources.each do |source| %>
