@@ -6,7 +6,11 @@
   <div class="hand">
     <div class="hand-resize">
       <% current_player.active_sources.each do |source| %>
-        <%= image_tag(source.path, height: "80px", data: {source_id: source.id}) %>
+        <div class="hand-img-container">
+          <div class="hand-img">
+            <%= image_tag(source.path, height: "80px", data: {source_id: source.id}) %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

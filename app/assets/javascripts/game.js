@@ -3,7 +3,7 @@ function initGame() {
   bindImageFunction($(".meme img"), makeTemplateMeme);
   bindImageFunction($(".template img"), makeTemplateMeme);
 
-  $(".hand img").click(makeSelectable);
+  $(".hand-img").click(selectSource);
   $(".meme").click(selectMeme);
 }
 
@@ -24,21 +24,12 @@ function makeTemplateMeme() {
   });
 }
 
-function makeSelectable() {
-  if($(this).hasClass("selected")) {
-    $(this).removeClass("selected");
-  } else {
-    $(this).addClass("selected");
-  }
-}
-
 function resizeGame() {
   // Subtract 10px for padding
   var scaleHand = (window.innerWidth - 10) / $(".hand-resize").width();
   $(".hand-resize").css({transform: "scale("+scaleHand+")"});
 
-  // Add 20px for the button
-  $(".bottom").height($(".hand-resize").height() * scaleHand + 20);
+  $(".bottom").height($(".hand-resize").height() * scaleHand - 20);
 
   // Subtract 30px for padding
   $(".main").height(window.innerHeight - $(".bottom").height() - 30);
@@ -58,6 +49,15 @@ function playHand() {
   App.player.play_sources($(".hand img.selected").map(function() {
     return parseInt($(this).data("source-id"));
   }).get());
+}
+
+function selectSource() {
+  var sources = $("[class^='hand-img source']").length;
+  if($(this).is("[class^='hand-img source']")) {
+    $(this).removeClass("source" + sources);
+  } else if(sources < 3) {
+    $(this).addClass("source" + (sources + 1));
+  }
 }
 
 function selectMeme() {

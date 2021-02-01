@@ -79,22 +79,50 @@
 
 .hand img {
   margin: 1px;
-  transition: 0.2s;
   cursor: pointer;
 }
 
-.hand img:hover {
+.hand-img {
+  transition: 0.2s;
+}
+
+.hand-img:hover {
   transform: translateY(-12%);
   transform-origin: bottom;
 }
 
 .hand-resize {
+  position: relative;
   white-space: nowrap;
   display: table;
   margin: auto;
   transform-origin: bottom;
 }
 
-.selected {
-  box-shadow: 0px 5px 10px 1px #111;
+.hand-img-container {
+  position: relative;
+  display: inline-block;
+}
+
+.source1::before, .source2::before, .source3::before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  width: 1em;
+  text-align: center;
+}
+
+.source1::before {
+  content: "1";
+}
+
+.source2::before {
+  content: "2";
+}
+
+.source3::before {
+  content: "3";
 }
