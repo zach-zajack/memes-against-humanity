@@ -83,4 +83,6 @@ function sendMessage(event) {
 
 $(window).on("resize", resizeGame);
 
-$(() => { initGame(); });
+$(document).on("turbolinks:load", function() {
+  initGame();
+})
