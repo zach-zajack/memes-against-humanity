@@ -1,0 +1,85 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 270px;
+  width: 300px;
+  padding: 10px;
+  border-left: 1px solid black;
+  padding: 0;
+}
+
+.scoreboard {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.scoreboard span::after {
+  position: absolute;
+  transform: translateX(5px) translateY(2px);
+  font-size: 14px;
+}
+
+.scoreboard span.czar::after {
+  content: "[CZAR]";
+}
+
+.scoreboard .playing::after {
+  content: "[PLAYING]";
+}
+
+.scoreboard span.winner::after {
+  content: "[WINNER]";
+}
+
+.scoreboard td:nth-child(1) {
+  width: 200px;
+}
+
+.messages {
+  position: relative;
+  height: 100%;
+  bottom: 0;
+}
+
+.message-container {
+  display: block;
+  padding: 4px;
+  overflow-y: auto;
+  height: calc(100% - 85px);
+}
+
+.message {
+  margin: 5px;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.message .author {
+  font-weight: bold;
+}
+
+.message .author::after {
+  content: ":";
+}
+
+#chatbox {
+  width: calc(100% - 20px);
+  font-size: 15px;
+  margin: 4px;
+  padding: 4px;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+  padding: 4px;
+  width: calc(100% - 8px);
+  border-top: 1px solid black;
+}
+
+.buttons button {
+  height: 100%;
+  width: 100%;
+}

@@ -1,70 +1,11 @@
-.main {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 320px;
-  bottom: 270px;
-  padding: 10px;
-}
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 270px;
-  width: 300px;
-  padding: 10px;
-}
-
 .bottom {
+  border-top: 1px solid black;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   height: 250px;
   padding: 10px;
-}
-
-.scoreboard span::after {
-  position: absolute;
-  transform: translateX(5px) translateY(2px);
-  font-size: 14px;
-}
-
-.scoreboard span.czar::after {
-  content: "[CZAR]";
-}
-
-.scoreboard .playing::after {
-  content: "[PLAYING]";
-}
-
-.scoreboard span.winner::after {
-  content: "[WINNER]";
-}
-
-.scoreboard td:nth-child(1) {
-  width: 200px;
-}
-
-.waiting {
-  padding-top: 15vh;
-  text-align: center;
-  width: 800px;
-}
-
-#chatbox {
-  position: absolute;
-  bottom: 50px;
-  width: calc(100% - 32px);
-  padding: 4px;
-}
-
-.buttons button {
-  position: absolute;
-  bottom: 15px;
-  height: 30px;
-  width: calc(100% - 20px);
 }
 
 .hand {

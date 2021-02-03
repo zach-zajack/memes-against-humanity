@@ -36,14 +36,15 @@ function resizeGame() {
   var mainHeight = window.innerHeight - $(".bottom").height() - 20;
   $(".main").height(mainHeight);
   $(".sidebar").height(mainHeight);
+  $(".messages").height(mainHeight - $(".scoreboard").outerHeight())
 
-  var templateHeightRatio = ($(".main").height() - 10) / $("#template").height();
-  var templateWidthRatio = $(".main").width() / $("#template").width();
+  var templateHeightRatio = $(".main").height() / $("#template").outerHeight();
+  var templateWidthRatio = $(".main").width() / $("#template").outerWidth();
   var scaleTemplate = Math.min(templateHeightRatio, templateWidthRatio);
   $("#template").css({transform: "scale("+scaleTemplate+")"});
 
-  var memeHeightRatio = ($(".main").height() - 10) / $("#memes").height();
-  var memeWidthRatio = $(".main").width() / $("#memes").width();
+  var memeHeightRatio = $(".main").height() / $("#memes").outerHeight();
+  var memeWidthRatio = $(".main").width() / $("#memes").outerWidth();
   var scaleMeme = Math.min(memeHeightRatio, memeWidthRatio);
   $("#memes").css({transform: "scale("+scaleMeme+")"});
 }
