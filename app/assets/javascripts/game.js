@@ -33,16 +33,16 @@ function resizeGame() {
   $(".bottom").height($(".hand-resize").height() * scaleHand - 10);
 
   // Subtract 20px for padding
-  var mainHeight = window.innerHeight - $(".bottom").height() - 30;
+  var mainHeight = window.innerHeight - $(".bottom").height() - 20;
   $(".main").height(mainHeight);
   $(".sidebar").height(mainHeight);
 
-  var templateHeightRatio = $(".main").height() / $("#template").height();
+  var templateHeightRatio = ($(".main").height() - 10) / $("#template").height();
   var templateWidthRatio = $(".main").width() / $("#template").width();
   var scaleTemplate = Math.min(templateHeightRatio, templateWidthRatio);
   $("#template").css({transform: "scale("+scaleTemplate+")"});
 
-  var memeHeightRatio = $(".main").height() / $("#memes").height();
+  var memeHeightRatio = ($(".main").height() - 10) / $("#memes").height();
   var memeWidthRatio = $(".main").width() / $("#memes").width();
   var scaleMeme = Math.min(memeHeightRatio, memeWidthRatio);
   $("#memes").css({transform: "scale("+scaleMeme+")"});
@@ -59,12 +59,16 @@ function playHand() {
 }
 
 function selectSource() {
+  var slots = $(".placeholder").length
   var sources = $("[class^='hand-img source']").length;
   if($(this).is("[class^='hand-img source']")) {
     $(this).removeClass("source" + sources);
-  } else if(sources < $(".placeholder").length) {
+    sources--;
+  } else if(sources < slots) {
     $(this).addClass("source" + (sources + 1));
+    sources++;
   }
+  $("#playHand").prop("disabled", sources != slots);
 }
 
 function selectMeme() {

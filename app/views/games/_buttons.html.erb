@@ -1,8 +1,9 @@
 <% return unless game.playing %>
 
 <div class="buttons">
-<% if current_player.czar? %>
-  <button onclick="selectMeme()">Select Meme</button>
-<% else %>
-  <button onclick="playHand()">Play Hand</button>
-<% end %>
+  <% if current_player.czar? %>
+    <button id="selectMeme" onclick="selectMeme()">Select Meme</button>
+  <% else %>
+    <button id="playHand" onclick="playHand()" disabled>Play Hand</button>
+  <% end %>
+</div>
