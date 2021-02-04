@@ -6,6 +6,8 @@ function initGame() {
   $(".hand-img").click(selectSource);
   $(".meme").click(selectMeme);
   $("#chatbox").keypress(sendMessage);
+
+  resizeGame();
 }
 
 function bindImageFunction(el, fun) {
