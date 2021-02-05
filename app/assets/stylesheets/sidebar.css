@@ -36,13 +36,13 @@
   width: 200px;
 }
 
-.messages {
+#messages {
   position: relative;
   height: 100%;
   bottom: 0;
 }
 
-.message-container {
+.messages {
   display: block;
   padding: 4px;
   overflow-y: auto;
@@ -64,6 +64,8 @@
 }
 
 #chatbox {
+  position: absolute;
+  bottom: 40px;
   width: calc(100% - 20px);
   font-size: 15px;
   margin: 4px;

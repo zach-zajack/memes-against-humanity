@@ -5,7 +5,6 @@ function initGame() {
 
   $(".hand-img").click(selectSource);
   $(".meme").click(selectMeme);
-  $("#chatbox").keypress(sendMessage);
 
   resizeGame();
 }
@@ -81,7 +80,7 @@ function selectMeme() {
 }
 
 function sendMessage(event) {
-  if(event.keyCode == 13) {
+  if(event.keyCode == 13 && event.target.value != "") {
     App.player.message(event.target.value);
     event.target.value = "";
     event.preventDefault();
@@ -92,4 +91,5 @@ $(window).on("resize", resizeGame);
 
 $(document).on("turbolinks:load", function() {
   initGame();
+  $("#chatbox").keypress(sendMessage);
 })
