@@ -22,6 +22,10 @@ class PlayersController < ApplicationController
     create
   end
 
+  def kick
+    Player.find(params[:id]).kick
+  end
+
   private
 
   def check_games

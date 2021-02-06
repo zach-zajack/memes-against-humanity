@@ -2,10 +2,17 @@
   <span>Players</span>
   <table>
     <% game.players.each do |player| %>
-      <tr>
-        <td><span class="<%= player_classes(player) %>"><%= player.name %></td>
+      <%= tag.tr(class: player_classes(player)) do %>
+        <td><span class="name"><%= player.name %></td>
         <td><%= player.score %></td>
-      </tr>
+        <td>
+          <% if current_player.can_kick?(player)  %>
+            <%= link_to(kick_player_path(game.join_code, player.id), method: :post) do %>
+              <%= octicon("circle-slash", class: "click-icon") %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
     <% end %>
   </table>
 </div>

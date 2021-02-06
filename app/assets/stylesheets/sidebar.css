@@ -15,21 +15,21 @@
   border-bottom: 1px solid var(--border);
 }
 
-.scoreboard span::after {
+.scoreboard td:nth-child(1)::after {
   position: absolute;
   transform: translateX(5px) translateY(2px);
   font-size: 14px;
 }
 
-.scoreboard span.czar::after {
-  content: "[CZAR]";
+.scoreboard .czar td:nth-child(1)::after {
+  content: "[CZAR]"; /* mayb you could do a crown here :D */
 }
 
-.scoreboard .playing::after {
+.scoreboard .playing td:nth-child(1)::after {
   content: "[PLAYING]";
 }
 
-.scoreboard span.winner::after {
+.scoreboard .winner td:nth-child(1)::after {
   content: "[WINNER]";
 }
 

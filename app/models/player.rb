@@ -35,6 +35,15 @@ class Player < ApplicationRecord
     !ready?
   end
 
+  def can_kick?(player)
+    master? && self != player
+  end
+
+  def kick
+    self.destroy
+    broadcast_player
+  end
+
   private
 
   def broadcast_player
