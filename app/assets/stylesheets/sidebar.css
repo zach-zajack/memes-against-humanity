@@ -5,13 +5,14 @@
   bottom: 270px;
   width: 300px;
   padding: 10px;
-  border-left: 1px solid black;
+  border-left: 1px solid var(--border);
   padding: 0;
+  background: var(--bg2);
 }
 
 .scoreboard {
   padding: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--border);
 }
 
 .scoreboard span::after {
@@ -66,10 +67,18 @@
 #chatbox {
   position: absolute;
   bottom: 40px;
-  width: calc(100% - 20px);
+  width: calc(100% - 22px);
   font-size: 15px;
   margin: 4px;
-  padding: 4px;
+  padding: 6px;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--input-bg);
+}
+
+#chatbox::placeholder {
+  color: var(--input-text);
 }
 
 .buttons {
@@ -78,7 +87,7 @@
   height: 30px;
   padding: 4px;
   width: calc(100% - 8px);
-  border-top: 1px solid black;
+  border-top: 1px solid var(--border);
 }
 
 .buttons button {

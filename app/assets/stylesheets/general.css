@@ -2,6 +2,8 @@ body {
   font-family: sans-serif;
   text-overflow: ellipsis;
   font-size: 20px;
+  color: var(--text);
+  background: var(--bg1);
 }
 
 img {

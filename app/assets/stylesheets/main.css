@@ -28,7 +28,11 @@
 
 .base, .overlay {
   inset: 0;
-  border-radius: 4px;
+  border-radius: 10px;
+}
+
+.base .selected {
+  box-shadow: 0 0 0 6px black;
 }
 
 .overlay {

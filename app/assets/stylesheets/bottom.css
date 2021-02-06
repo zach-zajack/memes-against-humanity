@@ -1,11 +1,12 @@
 .bottom {
-  border-top: 1px solid black;
+  border-top: 1px solid var(--border);
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   height: 250px;
   padding: 10px;
+  background: var(--bg2);
 }
 
 .hand {
@@ -42,6 +43,7 @@
   position: relative;
   display: inline-block;
   transition: 0.2s;
+  margin: 1px;
 }
 
 .hand-img:hover {
