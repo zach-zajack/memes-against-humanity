@@ -7,6 +7,9 @@ class Player < ApplicationRecord
   after_create_commit :broadcast_player
   after_destroy_commit { game.revalidate }
 
+  validates_uniqueness_of :name, scope: :game
+  validates_length_of :name, minimum: 1, maximum: 20
+
   def discard_played_sources
     memes.last&.sources&.each { |source| source.discard }
   end
