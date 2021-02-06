@@ -22,7 +22,7 @@
 }
 
 .scoreboard .czar td:nth-child(1)::after {
-  content: "[CZAR]"; /* mayb you could do a crown here :D */
+  content: "[CZAR]";
 }
 
 .scoreboard .playing td:nth-child(1)::after {
@@ -71,14 +71,6 @@
   font-size: 15px;
   margin: 4px;
   padding: 6px;
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  background: var(--input-bg);
-}
-
-#chatbox::placeholder {
-  color: var(--input-text);
 }
 
 .buttons {

@@ -17,6 +17,17 @@ img {
   -ms-user-select: none;
 }
 
+input {
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--input-bg);
+}
+
+input::placeholder {
+  color: var(--input-text);
+}
+
 .noclick {
   pointer-events: none;
 }
