@@ -1,8 +1,11 @@
 :root {
-  --bg1: #0e0e10;
-  --bg2: #18181b;
-  --input-bg: #464649;
-  --input-text: #c4c4c5;
-  --text: #eee;
-  --border: #2f2f31;
+  --bg1: #19191e;
+  --bg2: #202026;
+  --bg3: #131318;
+  --input-bg: #3e3e47;
+  --input-text: #adadba;
+  --text: #e6e5ed;
+  --border: #2f2f38;
+  --select: #29aa75;
+  --disabled: #29aa75;
 }

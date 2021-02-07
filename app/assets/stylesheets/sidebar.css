@@ -13,11 +13,17 @@
 .scoreboard {
   padding: 10px;
   border-bottom: 1px solid var(--border);
+  text-align: center;
+  line-height: 25px;
+}
+
+.scoreboard table {
+  text-align: left;
 }
 
 .scoreboard td:nth-child(1)::after {
   position: absolute;
-  transform: translateX(5px) translateY(2px);
+  right: 50px;
   font-size: 14px;
 }
 
@@ -34,7 +40,11 @@
 }
 
 .scoreboard td:nth-child(1) {
-  width: 200px;
+  width: 280px;
+}
+
+.scoreboard td:nth-child(2) {
+  width: 20px;
 }
 
 #messages {
@@ -67,8 +77,7 @@
 #chatbox {
   position: absolute;
   bottom: 40px;
-  width: calc(100% - 22px);
-  font-size: 15px;
+  width: calc(100% - 24px);
   margin: 4px;
   padding: 6px;
 }
