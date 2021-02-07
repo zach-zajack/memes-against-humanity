@@ -23,15 +23,22 @@
 .meme {
   display: inline-block;
   position: relative;
+  filter: brightness(80%) grayscale(20%);
+  transition: 0.2s;
+  margin: 8px;
+}
+
+.meme.selected {
+  filter: none;
 }
 
 .base, .overlay {
   inset: 0;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
-.base .selected {
-  box-shadow: 0 0 0 6px black;
+.selected .base {
+  box-shadow: 0 0 0 3px var(--select);
 }
 
 .overlay {

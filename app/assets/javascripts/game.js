@@ -4,7 +4,7 @@ function initGame() {
   bindImageFunction($(".template img"), makeTemplateMeme);
 
   $(".hand-img").click(selectSource);
-  $(".meme").click(selectMeme);
+  $(".meme").click(clickMeme);
 
   scrollMessages();
   resizeGame();
@@ -52,16 +52,6 @@ function resizeGame() {
   $("#main").css({transform: "scale("+scale+")", left: midpoint});
 }
 
-function playHand() {
-  $(".hand-container").addClass("noclick");
-  App.player.play_sources([
-    parseInt($(".source1 img").data("source-id")),
-    parseInt($(".source2 img").data("source-id")),
-    parseInt($(".source3 img").data("source-id"))
-  ]);
-  $(this).preventDefault();
-}
-
 function selectSource() {
   var slots = $(".placeholder").length
   var sources = $("[class^='hand-img source']").length;
@@ -75,17 +65,31 @@ function selectSource() {
   $("#playHand").prop("disabled", sources != slots);
 }
 
+function playHand() {
+  $(".hand-container").addClass("noclick");
+  $("#playHand").prop("disabled", true);
+  App.player.play_sources([
+    parseInt($(".source1 img").data("source-id")),
+    parseInt($(".source2 img").data("source-id")),
+    parseInt($(".source3 img").data("source-id"))
+  ]);
+}
+
+function clickMeme() {
+  $(".meme").removeClass("selected");
+  $(this).addClass("selected");
+}
+
 function selectMeme() {
-  var meme = parseInt($(this).data("meme-id"));
+  var meme = parseInt($(".meme.selected").data("meme-id"));
   App.player.select_meme(meme);
-  $(this).preventDefault();
+  $("#selectMeme").prop("disabled", true);
 }
 
 function sendMessage(event) {
   if(event.keyCode == 13 && event.target.value != "") {
     App.player.message(event.target.value);
     event.target.value = "";
-    event.preventDefault();
   }
 }
 

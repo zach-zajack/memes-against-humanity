@@ -12,6 +12,11 @@ module GamesHelper
     return ""
   end
 
+  def memes_classes(player)
+    return "noclick" unless player.czar?
+    return ""
+  end
+
   def display_memes?(player)
     player.ready? || player.czar?
   end
