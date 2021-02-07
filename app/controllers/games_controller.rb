@@ -13,7 +13,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.permit(:max_score, :public, :join_while_playing)
+    params.permit(:max_score, :public, :join_midgame, :source_count)
   end
 
   def game_initialize
