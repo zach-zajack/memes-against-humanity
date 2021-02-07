@@ -5,7 +5,7 @@ class Player < ApplicationRecord
   has_many   :messages
 
   after_create_commit :broadcast_player
-  after_destroy_commit { game.revalidate }
+  after_destroy_commit :revalidate_game
 
   validates_uniqueness_of :name, scope: :game
   validates_length_of :name, minimum: 1, maximum: 20
@@ -44,10 +44,14 @@ class Player < ApplicationRecord
 
   def kick
     self.destroy
-    broadcast_player
   end
 
   private
+
+  def revalidate_game
+    game.revalidate
+    broadcast_player
+  end
 
   def broadcast_player
     BroadcastGameJob.perform_later(game, "scoreboard")

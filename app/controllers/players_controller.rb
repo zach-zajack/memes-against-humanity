@@ -27,6 +27,11 @@ class PlayersController < ApplicationController
     Player.find(params[:id]).kick
   end
 
+  def destroy
+    player = Player.find(params[:id])
+    player.destroy if current_player == player
+  end
+
   private
 
   def check_games

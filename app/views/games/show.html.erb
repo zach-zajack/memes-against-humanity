@@ -1,6 +1,7 @@
 <div id="game">
   <div class="head">
     <div class="title">Memes Against Humanity</div>
+    <%= button_to("Leave", player_path(@game.join_code, current_player.id), method: :delete) %>
   </div>
 
   <div class="main">
