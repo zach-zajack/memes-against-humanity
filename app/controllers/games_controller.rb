@@ -2,7 +2,8 @@ class GamesController < ApplicationController
   before_action :game_initialize
 
   def start
-    @game.start if @game.update(game_params.merge(playing: true))
+    return unless @game.update(game_params.merge(playing: true))
+    @game.start 
     render :show
   end
 
