@@ -23,7 +23,6 @@
 .meme {
   display: inline-block;
   position: relative;
-  text-align: left;
 }
 
 .base, .overlay {

@@ -42,7 +42,8 @@ function resizeGame() {
   var heightRatio = $(".main").height() / $("#main").outerHeight();
   var widthRatio = $(".main").width() / $("#main").outerWidth();
   var scale = Math.min(heightRatio, widthRatio);
-  $("#main").css({transform: "scale("+scale+")"});
+  var midpoint = ($(".main").width() - $("#main").outerWidth()*scale) / 2
+  $("#main").css({transform: "scale("+scale+")", left: midpoint});
 }
 
 function playHand() {
