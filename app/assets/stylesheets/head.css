@@ -1,0 +1,13 @@
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 39px;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--bg3);
+}
+
+.head .title {
+  padding: 10px;
+}

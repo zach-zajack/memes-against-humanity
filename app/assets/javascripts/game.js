@@ -33,8 +33,8 @@ function resizeGame() {
 
   $(".bottom").height($(".hand-resize").height() * scaleHand - 10);
 
-  // Subtract 20px for padding
-  var mainHeight = window.innerHeight - $(".bottom").height() - 20;
+  // Subtract 60px for padding (20px) + head (40px)
+  var mainHeight = window.innerHeight - $(".bottom").height() - 60;
   $(".main").height(mainHeight);
   $(".sidebar").height(mainHeight);
   $(".messages").height(mainHeight - $(".scoreboard").outerHeight())
