@@ -23,6 +23,7 @@ class PlayersController < ApplicationController
   end
 
   def kick
+    return unless current_player.master?
     Player.find(params[:id]).kick
   end
 
