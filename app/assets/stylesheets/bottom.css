@@ -45,11 +45,13 @@
   transition: 0.2s;
   margin: 3px;
   margin-top: 0;
+  filter: brightness(80%) grayscale(20%);
 }
 
 .hand-img:hover {
   transform: translateY(-12%);
   transform-origin: bottom;
+  filter: none;
 }
 
 .hand-resize {
@@ -58,6 +60,10 @@
   display: table;
   margin: auto;
   transform-origin: bottom;
+}
+
+.source1, .source2, .source3 {
+  filter: none;
 }
 
 .source1 img, .source2 img, .source3 img {
