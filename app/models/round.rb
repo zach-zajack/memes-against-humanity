@@ -19,7 +19,7 @@ class Round < ApplicationRecord
   private
 
   def broadcast_round
-    BroadcastGameJob.perform_later(game, "buttons", "memes", "template", "hand", "scoreboard")
+    BroadcastGameJob.perform_later(game, "buttons", "main", "hand", "scoreboard")
   end
 
   def pick_czar

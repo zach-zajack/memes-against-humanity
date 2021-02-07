@@ -13,7 +13,7 @@
   width: 800px;
 }
 
-#memes, #template {
+#main {
   position: relative;
   transform-origin: top left;
   display: table;

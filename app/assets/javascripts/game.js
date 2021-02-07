@@ -39,15 +39,10 @@ function resizeGame() {
   $(".sidebar").height(mainHeight);
   $(".messages").height(mainHeight - $(".scoreboard").outerHeight())
 
-  scaleMainChild($("#template"));
-  scaleMainChild($("#memes"));
-}
-
-function scaleMainChild(el) {
-  var heightRatio = $(".main").height() / el.outerHeight();
-  var widthRatio = $(".main").width() / el.outerWidth();
+  var heightRatio = $(".main").height() / $("#main").outerHeight();
+  var widthRatio = $(".main").width() / $("#main").outerWidth();
   var scale = Math.min(heightRatio, widthRatio);
-  el.css({transform: "scale("+scale+")"});
+  $("#main").css({transform: "scale("+scale+")"});
 }
 
 function playHand() {

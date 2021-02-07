@@ -8,15 +8,11 @@ module GamesHelper
 
   def hand_classes(player)
     return "noclick czar-hand" if player.czar?
-    return "noclick"      if player.ready?
+    return "noclick" if player.ready?
     return ""
   end
 
   def display_memes?(player)
     player.ready? || player.czar?
-  end
-
-  def display_template?(player)
-    !display_memes?(player)
   end
 end
