@@ -54,10 +54,12 @@
 }
 
 .messages {
-  display: block;
   padding: 4px;
+  overflow-y: hidden;
+}
+
+.messages:hover {
   overflow-y: auto;
-  height: calc(100% - 85px);
 }
 
 .message {

@@ -66,3 +66,23 @@ input::placeholder {
   filter: invert(0.5);
   cursor: pointer;
 }
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--input-bg);
+  border: 5px solid var(--bg2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
