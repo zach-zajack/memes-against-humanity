@@ -11,7 +11,7 @@ class Source < ApplicationRecord
   private
 
   ROOT = "https://www.shitpostbot.com/img/sourceimages/"
-  DATA = JSON.parse(File.open("public/sources.json").read)
+  DATA = JSON.parse(S3_BUCKET.object("sources.json").get.body.read)
 
   def generate_source_path
     self.path = loop do

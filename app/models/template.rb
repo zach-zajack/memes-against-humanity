@@ -31,7 +31,7 @@ class Template < ApplicationRecord
   private
 
   ROOT = "https://www.shitpostbot.com/img/templates/"
-  DATA = JSON.parse(File.open("public/templates.json").read)
+  DATA = JSON.parse(S3_BUCKET.object("templates.json").get.body.read)
 
   def generate_template_data
     self.key = loop do
