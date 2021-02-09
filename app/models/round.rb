@@ -6,7 +6,7 @@ class Round < ApplicationRecord
 
   before_create :pick_czar
   before_create :generate_template
-  after_create_commit :broadcast_round
+  after_create_commit { BroadcastGameJob.perform_later(game, :round) }
 
   def czar
     Player.find_by(id: czar_id)
@@ -17,10 +17,6 @@ class Round < ApplicationRecord
   end
 
   private
-
-  def broadcast_round
-    BroadcastGameJob.perform_later(game, "buttons", "main", "hand", "scoreboard")
-  end
 
   def pick_czar
     self.czar_id = players[game.rounds.count % players.count].id

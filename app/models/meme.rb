@@ -7,7 +7,7 @@ class Meme < ApplicationRecord
   validate :source_count_matches_template
   validate :player_submitted_once
 
-  after_create_commit :broadcast_meme
+  after_create_commit { BroadcastGameJob.perform_later(game, :meme) }
 
   def sources
     [
@@ -23,14 +23,11 @@ class Meme < ApplicationRecord
 
   def select_winner
     player.increment!(:score)
+    round.update_attribute(:winner_id, player.id)
     game.advance
   end
 
   private
-
-  def broadcast_meme
-    BroadcastGameJob.perform_later(game, "main", "scoreboard")
-  end
 
   def source_count_matches_template
     if source_ids.count < template.slots

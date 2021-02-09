@@ -4,7 +4,7 @@ class Player < ApplicationRecord
   has_many   :memes
   has_many   :messages
 
-  after_create_commit :broadcast_player
+  after_create_commit { BroadcastGameJob.perform_later(game, :scoreboard) }
   after_destroy_commit :revalidate_game
 
   validates_uniqueness_of :name, scope: :game
@@ -50,10 +50,6 @@ class Player < ApplicationRecord
 
   def revalidate_game
     game.revalidate
-    broadcast_player
-  end
-
-  def broadcast_player
-    BroadcastGameJob.perform_later(game, "scoreboard")
+    BroadcastGameJob.perform_later(game, :scoreboard)
   end
 end
