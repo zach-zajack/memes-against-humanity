@@ -6,8 +6,8 @@ function initGame() {
   $(".hand-img").click(selectSource);
   $(".meme").click(clickMeme);
 
-  scrollMessages();
   resizeGame();
+  scrollMessages();
 }
 
 function bindImageFunction(el, fun) {
@@ -31,7 +31,7 @@ function makeTemplateMeme() {
 }
 
 function scrollMessages() {
-  var el = $(".messages")[0]
+  var el = $(".messages")[0];
   el.scrollTop = el.scrollHeight;
 }
 
@@ -46,7 +46,7 @@ function resizeGame() {
   var mainHeight = window.innerHeight - $(".bottom").height() - 60;
   $(".main").height(mainHeight);
   $(".sidebar").height(mainHeight);
-  $(".messages").height(mainHeight - $(".scoreboard").outerHeight() - 90)
+  $(".messages").height(mainHeight - $(".scoreboard").outerHeight() - 90);
 
   var heightRatio = $(".main").height() / $("#main").outerHeight();
   var widthRatio = $(".main").width() / $("#main").outerWidth();
