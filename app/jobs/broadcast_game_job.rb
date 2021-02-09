@@ -25,7 +25,9 @@ class BroadcastGameJob < ApplicationJob
         locals: { game: game, current_player: player }
       )
     end
-    return broadcast
+    return data unless type == :round
+    winner = game.prev_round&.winner
+    data[:winner] = {id: winner.id, meme_id: winner.memes.last.id} unless winner.nil?
     return data
   end
 end

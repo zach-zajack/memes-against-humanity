@@ -51,6 +51,10 @@ class Game < ApplicationRecord
     rounds.last
   end
 
+  def prev_round
+    rounds[-2]
+  end
+
   def master
     players.first
   end

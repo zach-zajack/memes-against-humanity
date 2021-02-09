@@ -2,14 +2,13 @@
   <span>Players</span>
   <table>
     <% game.players.each do |player| %>
-      <%= tag.tr(class: player_classes(player)) do %>
+      <%= tag.tr(class: player_classes(player), data: {player_id: player.id}) do %>
         <td><span class="name"><%= player.name %></td>
         <td><%= player.score %></td>
+        <% next unless current_player.can_kick?(player) %>
         <td>
-          <% if current_player.can_kick?(player)  %>
-            <%= link_to(kick_player_path(game.join_code, player.id), method: :post) do %>
-              <%= octicon("circle-slash", class: "click-icon") %>
-            <% end %>
+          <%= link_to(kick_player_path(game.join_code, player.id), method: :post) do %>
+            <%= octicon("circle-slash", class: "click-icon") %>
           <% end %>
         </td>
       <% end %>
