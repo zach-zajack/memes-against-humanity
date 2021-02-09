@@ -99,6 +99,15 @@ function sendMessage(event) {
   }
 }
 
+function selectWinner(winner) {
+  var meme   = $("[data-meme-id='"   + winner.meme_id + "']");
+  var player = $("[data-player-id='" + winner.id + "']");
+  var score  = $("[data-player-id='" + winner.id + "'] .score");
+  meme.addClass("winner");
+  player.addClass("winner");
+  score.html(parseInt(score.html()) + 1);
+}
+
 $(window).on("resize", resizeGame);
 
 $(document).on("turbolinks:load", function() {

@@ -14,9 +14,7 @@ $(document).on "turbolinks:load", ->
           initGame()
 
       if data.winner?
-        $("#scoreboard").html(data.scoreboard)
-        $("[data-player-id='" + data.winner.id + "']").addClass("winner")
-        $("[data-meme-id='" + data.winner.meme_id + "']").addClass("winner")
+        selectWinner(data.winner)
         setTimeout(refresh_partials, 3000)
       else
         refresh_partials()
