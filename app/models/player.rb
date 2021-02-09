@@ -23,7 +23,7 @@ class Player < ApplicationRecord
   end
 
   def czar?
-    game.round&.czar == self
+    game.playing && game.round&.czar == self
   end
 
   def winner?
@@ -31,11 +31,11 @@ class Player < ApplicationRecord
   end
 
   def ready?
-    game.round&.memes&.include? memes.last
+    game.playing && game.round&.memes&.include?(memes.last)
   end
 
   def playing?
-    !ready?
+    game.playing && !ready?
   end
 
   def can_kick?(player)
