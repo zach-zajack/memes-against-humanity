@@ -27,6 +27,8 @@ gem "redis", "~> 4.0"
 gem "octicons_helper", "~> 12.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
+# Use AWS for the source/template data
+gem "aws-sdk"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
