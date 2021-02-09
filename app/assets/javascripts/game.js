@@ -20,10 +20,13 @@ function bindImageFunction(el, fun) {
 function makeTemplateMeme() {
   resizeGame();
   $(".placeholder").map(function() {
-    $(this).css("top",    $(this).attr("data-y") + "px");
-    $(this).css("left",   $(this).attr("data-x") + "px");
-    $(this).css("height", $(this).attr("data-height") + "px");
-    $(this).css("width",  $(this).attr("data-width") + "px");
+    // TODO: store dimensions as a percentage of template in db
+    //       instead of calculating it here
+    ratio = 200 / $("img.base").prop("naturalHeight");
+    $(this).css("top",    ratio * parseInt($(this).attr("data-y")));
+    $(this).css("left",   ratio * parseInt($(this).attr("data-x")));
+    $(this).css("height", ratio * parseInt($(this).attr("data-height")));
+    $(this).css("width",  ratio * parseInt($(this).attr("data-width")));
   });
 }
 
