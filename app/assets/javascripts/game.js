@@ -3,7 +3,10 @@ function initGame() {
   bindImageFunction($(".meme img"), makeTemplateMeme);
   bindImageFunction($(".template img"), makeTemplateMeme);
 
+  $(".hand-img").off();
   $(".hand-img").click(selectSource);
+
+  $(".meme").off();
   $(".meme").click(clickMeme);
 
   resizeGame();
