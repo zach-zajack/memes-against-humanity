@@ -17,7 +17,7 @@
   position: relative;
   transform-origin: top left;
   display: table;
-  padding-bottom: 20px;
+  padding-bottom: 8px;
 }
 
 .meme {
@@ -28,7 +28,7 @@
   margin: 3px;
 }
 
-.meme.selected {
+.meme.selected, .meme.winner {
   filter: none;
 }
 
@@ -37,7 +37,7 @@
   border-radius: 3px;
 }
 
-.selected .base {
+.selected .base, .winner .base {
   box-shadow: 0 0 0 2px var(--select);
 }
 

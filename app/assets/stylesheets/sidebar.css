@@ -35,6 +35,10 @@
   content: "[PLAYING]";
 }
 
+.scoreboard .winner {
+  color: var(--select);
+}
+
 .scoreboard .winner td:nth-child(1)::after {
   content: "[WINNER]";
 }
