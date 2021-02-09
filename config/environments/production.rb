@@ -97,12 +97,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.web_socket_server_url = "wss://pretendyoureshitpostbot.herokuapp.com/cable"
+  config.web_socket_server_url = "wss://memesagainsthumanity.herokuapp.com/cable"
 
   # Allow request origins
   config.action_cable.allowed_request_origins = [
-    "https://pretendyoureshitpostbot.herokuapp.com",
-    "http://pretendyoureshitpostbot.herokuapp.com"
+    "https://memesagainsthumanity.herokuapp.com",
+    "http://memesagainsthumanity.herokuapp.com"
   ]
 
   # Inserts middleware to perform automatic connection switching.
