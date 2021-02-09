@@ -1,4 +1,6 @@
 class Meme < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :round
   belongs_to :player
   delegate :game,     to: :round

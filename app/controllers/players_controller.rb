@@ -24,7 +24,7 @@ class PlayersController < ApplicationController
 
   def kick
     return unless current_player.master?
-    Player.find(params[:id]).kick
+    Player.find(params[:id]).destroy
   end
 
   def destroy

@@ -1,4 +1,6 @@
 class Round < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :game
   has_one    :template, dependent: :destroy
   has_many   :memes,    dependent: :destroy

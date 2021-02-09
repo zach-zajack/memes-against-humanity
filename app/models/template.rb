@@ -1,4 +1,6 @@
 class Template < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :round
   delegate :game, to: :round
 

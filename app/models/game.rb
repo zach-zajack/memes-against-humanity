@@ -1,4 +1,6 @@
 class Game < ApplicationRecord
+  acts_as_paranoid
+
   has_many :players, dependent: :destroy
   has_many :rounds,  dependent: :destroy
   has_many :templates, through: :rounds
@@ -7,11 +9,11 @@ class Game < ApplicationRecord
   has_many :messages,  through: :players
 
   before_create :generate_join_code
+ # after_destroy_commit TODO: refresh
 
   validate :player_minimum_reached
 
   def start
-    PlayerChannel.broadcast_to(master, options: "")
     PlayerChannel.broadcast_to(master, partials: {options: ""})
     reset_score
     advance_round
@@ -20,6 +22,8 @@ class Game < ApplicationRecord
   def stop
     update_attribute(:playing, false)
     BroadcastGameJob.perform_later(self, :stop)
+    sources.each(&:destroy)
+    rounds.each(&:destroy)
   end
 
   def reset_score
@@ -67,6 +71,7 @@ class Game < ApplicationRecord
   def revalidate
     players.reload
     stop unless self.valid?
+    self.destroy if players.count < 1
   end
 
   private

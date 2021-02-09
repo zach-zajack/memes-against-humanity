@@ -1,4 +1,6 @@
 class Source < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :player
   delegate :game, to: :player
 

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
     t.integer "max_score", default: 10
     t.integer "source_count", default: 7
     t.boolean "join_midgame", default: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
     t.integer "source1_id"
     t.integer "source2_id"
     t.integer "source3_id"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
     t.string "name"
     t.integer "game_id"
     t.integer "score", default: 0
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
     t.integer "winner_id"
     t.integer "template_id"
     t.boolean "judging", default: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
     t.integer "player_id"
     t.boolean "discarded"
     t.string "path"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_225210) do
   create_table "templates", force: :cascade do |t|
     t.integer "round_id"
     t.string "key"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

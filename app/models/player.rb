@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :game
   has_many   :sources, dependent: :destroy
   has_many   :memes
@@ -40,10 +42,6 @@ class Player < ApplicationRecord
 
   def can_kick?(player)
     master? && self != player
-  end
-
-  def kick
-    self.destroy
   end
 
   private
