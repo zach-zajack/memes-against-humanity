@@ -29,6 +29,8 @@ gem "octicons_helper", "~> 12.0"
 gem "bootsnap", ">= 1.1.0", require: false
 # Use AWS for the source/template data
 gem "aws-sdk"
+# Soft destroy for ActiveRecord
+gem "paranoia", "~> 2.2"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

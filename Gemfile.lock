@@ -1177,6 +1177,8 @@ GEM
     octicons_helper (12.0.0)
       octicons (= 12.0.0)
       rails
+    paranoia (2.4.3)
+      activerecord (>= 4.0, < 6.2)
     pg (1.2.3)
     public_suffix (4.0.6)
     puma (3.12.6)
@@ -1287,6 +1289,7 @@ DEPENDENCIES
   jquery-rails (~> 4.4)
   listen (>= 3.0.5, < 3.2)
   octicons_helper (~> 12.0)
+  paranoia (~> 2.2)
   pg
   puma (~> 3.11)
   rails (~> 6.1.1)
