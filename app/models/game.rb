@@ -12,6 +12,7 @@ class Game < ApplicationRecord
 
   def start
     PlayerChannel.broadcast_to(master, options: "")
+    PlayerChannel.broadcast_to(master, partials: {options: ""})
     reset_score
     advance_round
   end
