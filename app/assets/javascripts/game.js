@@ -104,7 +104,7 @@ function selectWinner(winner) {
   var player = $("[data-player-id='" + winner.id + "']");
   var score  = $("[data-player-id='" + winner.id + "'] .score");
   meme.addClass("winner");
-  player.addClass("winner");
+  player.addClass("winner active");
   score.html(parseInt(score.html()) + 1);
 }
 
