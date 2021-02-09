@@ -3,8 +3,12 @@ class GamesController < ApplicationController
 
   def start
     return unless @game.update(game_params.merge(playing: true))
-    @game.start 
+    @game.start
     render :show
+  end
+
+  def stop
+    @game.stop
   end
 
   def show

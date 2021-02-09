@@ -9,13 +9,12 @@
 }
 
 .head .title {
+  position: absolute;
   padding: 10px;
 }
 
 .head input[type="submit"] {
-  position: absolute;
-  top: 0;
-  right: 0;
+  float: right;
   padding: 5px;
   margin: 4px;
   background-color: var(--danger);

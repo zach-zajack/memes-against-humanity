@@ -18,6 +18,7 @@ class Game < ApplicationRecord
 
   def stop
     update_attribute(:playing, false)
+    BroadcastGameJob.perform_later(self, "buttons", "options", "main", "hand", "scoreboard")
   end
 
   def reset_score

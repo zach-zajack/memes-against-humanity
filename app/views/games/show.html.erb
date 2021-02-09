@@ -1,7 +1,8 @@
 <div id="game">
   <div class="head">
-    <div class="title">Memes Against Humanity</div>
+    <span class="title">Memes Against Humanity</span>
     <%= button_to("Leave", player_path(@game.join_code, current_player.id), method: :delete) %>
+    <%= button_to("Stop game", stop_game_path(@game.join_code)) if current_player.master? %>
   </div>
 
   <div class="main">

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         member { post "kick" }
       end
       post "start"
+      post "stop"
     end
   end
 
