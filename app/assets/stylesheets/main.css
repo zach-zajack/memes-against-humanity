@@ -25,7 +25,7 @@
   position: relative;
   filter: brightness(80%) grayscale(20%);
   transition: 0.2s;
-  margin: 8px;
+  margin: 3px;
 }
 
 .meme.selected {
@@ -34,11 +34,11 @@
 
 .base, .overlay {
   inset: 0;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .selected .base {
-  box-shadow: 0 0 0 3px var(--select);
+  box-shadow: 0 0 0 2px var(--select);
 }
 
 .overlay {

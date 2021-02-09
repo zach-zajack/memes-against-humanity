@@ -43,13 +43,13 @@
   position: relative;
   display: inline-block;
   transition: 0.2s;
-  margin: 3px;
+  margin: 2px;
   margin-top: 0;
   filter: brightness(80%) grayscale(20%);
 }
 
 .hand-img:hover {
-  transform: translateY(-12%);
+  transform: translateY(-5%);
   transform-origin: bottom;
   filter: none;
 }
