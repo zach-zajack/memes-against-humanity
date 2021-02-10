@@ -7,6 +7,7 @@ class Player < ApplicationRecord
   has_many   :messages
 
   after_create_commit { BroadcastGameJob.perform_later(game, :scoreboard) }
+  before_destroy { PlayerChannel.broadcast_to(self, redirect: true) }
   after_destroy_commit :revalidate_game
 
   validates_uniqueness_of :name, scope: :game
@@ -48,6 +49,6 @@ class Player < ApplicationRecord
 
   def revalidate_game
     game.revalidate
-    BroadcastGameJob.perform_later(game, :scoreboard)
+    BroadcastGameJob.perform_later(game, :leave)
   end
 end

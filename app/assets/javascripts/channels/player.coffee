@@ -16,6 +16,8 @@ $(document).on "turbolinks:load", ->
       if data.winner?
         selectWinner(data.winner)
         setTimeout(refresh_partials, 3000)
+      else if data.redirect?
+        window.location = "/"
       else
         refresh_partials()
 

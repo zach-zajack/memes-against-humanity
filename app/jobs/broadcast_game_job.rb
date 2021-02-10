@@ -6,6 +6,7 @@ class BroadcastGameJob < ApplicationJob
     message: ["messages"],
     round: ["buttons", "main", "hand", "scoreboard"],
     meme: ["main", "scoreboard"],
+    leave: ["options", "scoreboard"],
     stop: ["buttons", "options", "main", "hand", "scoreboard"]
   }
 
