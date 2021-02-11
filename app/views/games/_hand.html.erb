@@ -1,13 +1,22 @@
-<% return unless game.playing %>
-
-<%= tag.div(class: "hand-container " + hand_classes(current_player)) do %>
-  <div class="hand">
-    <div class="hand-resize">
-      <% current_player.active_sources.each do |source| %>
-        <div class="hand-img">
-          <%= image_tag(source.path, height: "80px", data: {source_id: source.id}) %>
-        </div>
-      <% end %>
+<% if !game.playing %>
+  <span>Please wait for the host to start the game.</span>
+<% elsif current_player.active_sources.any? %>
+  <%= tag.div(class: "hand-container " + hand_classes(current_player)) do %>
+    <div class="hand">
+      <div class="hand-resize">
+        <% current_player.active_sources.each do |source| %>
+          <div class="hand-img">
+            <%= image_tag(source.path, height: "80px", data: {source_id: source.id}) %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+    <% if current_player.czar? %>
+      <%= tag.div(class: "czar-hand") do %>
+        <span>You are the Czar. When everyone is ready, select the best meme.</span>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <span>Please wait until next round for the cards to be distributed.</span>
 <% end %>

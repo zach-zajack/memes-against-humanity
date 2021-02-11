@@ -7,8 +7,7 @@ module GamesHelper
   end
 
   def hand_classes(player)
-    return "noclick czar-hand" if player.czar?
-    return "noclick" if player.ready?
+    return "noclick" if player.ready? || player.czar?
     return ""
   end
 

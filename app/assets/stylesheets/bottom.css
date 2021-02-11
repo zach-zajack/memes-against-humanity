@@ -23,14 +23,17 @@
   -webkit-filter: grayscale(90%);
 }
 
-.czar-hand::after {
+.czar-hand {
   position: absolute;
   inset: 0;
-  color: white;
   background: rgba(0, 0, 0, 0.7);
+}
+
+.bottom span {
+  position: absolute;
+  inset: 0;
   text-align: center;
-  content: "You are the Czar. When everyone is ready, select the best meme.";
-  padding-top: 6%;
+  transform: translateY(50%);
 }
 
 .hand img {
