@@ -86,3 +86,11 @@ input::placeholder {
 ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+
+::selection {
+  background: var(--select);
+}
+
+::-moz-selection {
+  background: var(--select);
+}
