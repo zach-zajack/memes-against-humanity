@@ -12,6 +12,7 @@ class Player < ApplicationRecord
 
   validates_uniqueness_of :name, scope: :game
   validates_length_of :name, minimum: 1, maximum: 20
+  validate :game_in_play
 
   def discard_played_sources
     memes.last&.sources&.each { |source| source.discard }
@@ -45,10 +46,19 @@ class Player < ApplicationRecord
     master? && self != player
   end
 
+  def inactive?
+    sources.empty? || czar?
+  end
+
   private
 
   def revalidate_game
     game.revalidate
     BroadcastGameJob.perform_later(game, :leave)
+  end
+
+  def game_in_play
+    return unless game.playing && !game.join_midgame
+    errors.add(:base, "game already in play")
   end
 end

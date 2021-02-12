@@ -17,6 +17,6 @@ module GamesHelper
   end
 
   def display_memes?(player)
-    player.ready? || player.czar?
+    player.ready? || player.inactive?
   end
 end

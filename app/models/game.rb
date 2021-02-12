@@ -9,7 +9,6 @@ class Game < ApplicationRecord
   has_many :messages,  through: :players
 
   before_create :generate_join_code
- # after_destroy_commit TODO: refresh
 
   validate :player_minimum_reached
 
@@ -65,7 +64,7 @@ class Game < ApplicationRecord
   end
 
   def active_players
-    players.excluding(round&.czar)
+    players.reject(&:inactive?)
   end
 
   def revalidate
@@ -84,8 +83,7 @@ class Game < ApplicationRecord
   end
 
   def player_minimum_reached
-    if self.playing && self.players.count < 3
-      errors.add(:base, "not enough players")
-    end
+    return unless self.playing && self.players.count < 3
+    errors.add(:base, "not enough players")
   end
 end
