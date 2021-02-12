@@ -18,6 +18,9 @@ $(document).on "turbolinks:load", ->
         setTimeout(refresh_partials, 3000)
       else if data.redirect?
         window.location = "/"
+      else if data.message?
+        $(".messages").append(data.message)
+        initGame()
       else
         refresh_partials()
 

@@ -3,7 +3,6 @@ class BroadcastGameJob < ApplicationJob
 
   TYPES = {
     scoreboard: ["scoreboard"],
-    message: ["messages"],
     round: ["buttons", "main", "hand", "scoreboard"],
     meme: ["main", "scoreboard"],
     leave: ["options", "scoreboard"],
@@ -11,29 +10,31 @@ class BroadcastGameJob < ApplicationJob
   }
 
   def perform(game, type)
-    game.players.each do |player|
-      PlayerChannel.broadcast_to(player, render_partials(game, player, type))
+    @game = game
+    @type = type
+    @game.players.each do |player|
+      PlayerChannel.broadcast_to(player, render_partial(player))
     end
   end
 
   private
 
-  def render_partials(game, player, type)
+  def render_partial(player)
     data = {partials: {}}
     TYPES[type].each do |partial|
       data[:partials][partial] = ApplicationController.render(
         partial: "games/#{partial}",
-        locals: { game: game, current_player: player }
+        locals: { game: @game, current_player: player }
       )
     end
-    data[:winner] = last_winner(game, type)
+    data[:winner] = last_winner
     return data
   end
 
-  def last_winner(game, type)
-    case type
-    when :round then winner_data(game.prev_round&.winner)
-    when :stop  then winner_data(game.round&.winner)
+  def last_winner
+    case @type
+    when :round then winner_data(@game.prev_round&.winner)
+    when :stop  then winner_data(@game.round&.winner)
     end
   end
 

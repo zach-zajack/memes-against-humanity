@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :player
 
-  after_create_commit { BroadcastGameJob.perform_later(player.game, :message) }
+  after_create_commit { BroadcastMessageJob.perform_later(player.game, self) }
 
   validates_length_of :content, minimum: 1, maximum: 200
   validate :spam
