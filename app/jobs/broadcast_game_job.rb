@@ -21,7 +21,7 @@ class BroadcastGameJob < ApplicationJob
 
   def render_partial(player)
     data = {partials: {}}
-    TYPES[type].each do |partial|
+    TYPES[@type].each do |partial|
       data[:partials][partial] = ApplicationController.render(
         partial: "games/#{partial}",
         locals: { game: @game, current_player: player }
