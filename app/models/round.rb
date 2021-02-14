@@ -21,7 +21,7 @@ class Round < ApplicationRecord
   private
 
   def pick_czar
-    self.czar_id = players[game.rounds.count % players.count].id
+    self.czar_id = game.ordered_players[game.rounds.count % players.count].id
   end
 
   def generate_template

@@ -1,7 +1,7 @@
 <div class="scoreboard">
   <span>Players</span>
   <table>
-    <% game.players.each do |player| %>
+    <% game.ordered_players.each do |player| %>
       <%= tag.tr(class: player_classes(player), data: {player_id: player.id}) do %>
         <td><span class="name"><%= player.name %></span></td>
         <td><span class="score"><%= player.score %></span></td>

@@ -60,7 +60,11 @@ class Game < ApplicationRecord
   end
 
   def master
-    players.first
+    ordered_players.first
+  end
+
+  def ordered_players
+    players.order("created_at ASC")
   end
 
   def active_players
