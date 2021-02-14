@@ -59,10 +59,6 @@
 
 .messages {
   padding: 4px;
-  overflow-y: hidden;
-}
-
-.messages:hover {
   overflow-y: auto;
 }
 
