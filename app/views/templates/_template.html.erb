@@ -1,5 +1,5 @@
 <div class="template">
-  <%= image_tag(template.base, class: "base", height: 200) %>
+  <%= image_tag(template.base, class: "base", height: 400) %>
   <% template.rects.each.with_index(1) do |rect, i| %>
     <% rect.each do |coords| %>
       <%= tag.div(class: "placeholder", data: coords) do %>
@@ -8,5 +8,5 @@
       <% end %>
     <% end %>
   <% end %>
-  <%= image_tag(template.overlay, class: "overlay", height: 200) if template.overlay? %>
+  <%= image_tag(template.overlay, class: "overlay", height: 400) if template.overlay? %>
 </div>

@@ -25,7 +25,7 @@ function makeTemplateMeme() {
   $(".placeholder").map(function() {
     // TODO: store dimensions as a percentage of template in db
     //       instead of calculating it here
-    ratio = 200 / $("img.base").prop("naturalHeight");
+    ratio = 400 / $("img.base").prop("naturalHeight");
     $(this).css("top",    ratio * parseInt($(this).attr("data-y")));
     $(this).css("left",   ratio * parseInt($(this).attr("data-x")));
     $(this).css("height", ratio * parseInt($(this).attr("data-height")));
