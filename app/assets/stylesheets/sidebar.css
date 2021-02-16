@@ -60,6 +60,7 @@
 .messages {
   padding: 4px;
   overflow-y: auto;
+  word-break: break-word;
 }
 
 .message {
