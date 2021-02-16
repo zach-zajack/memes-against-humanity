@@ -96,6 +96,7 @@ function sendMessage(event) {
   if(event.keyCode == 13 && event.target.value != "") {
     App.player.message(event.target.value);
     event.target.value = "";
+    event.preventDefault();
   }
 }
 

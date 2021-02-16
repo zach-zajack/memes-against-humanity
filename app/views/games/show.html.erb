@@ -16,7 +16,7 @@
     <div id="messages">
       <div class="messages"><%= render @game.messages %></div>
     </div>
-    <input id="chatbox" type="text" placeholder="Send a message...">
+    <textarea id="chatbox" rows="1" placeholder="Send a message..."></textarea>
 
     <div id="buttons"><%= render "buttons", game: @game %></div>
   </div>

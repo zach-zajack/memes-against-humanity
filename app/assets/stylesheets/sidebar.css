@@ -81,9 +81,12 @@
 #chatbox {
   position: absolute;
   bottom: 40px;
+  height: auto;
   width: calc(100% - 24px);
   margin: 4px;
   padding: 6px;
+  resize: none;
+  font-family: inherit;
 }
 
 .buttons {
