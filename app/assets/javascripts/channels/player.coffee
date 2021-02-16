@@ -1,5 +1,5 @@
 $(document).on "turbolinks:load", ->
-  return unless window.location.pathname.match(/\/games\/\d{4}/g)
+  return unless $("#game").length
   App.player = App.cable.subscriptions.create "PlayerChannel",
     connected: ->
       # Called when the subscription is ready for use on the server
