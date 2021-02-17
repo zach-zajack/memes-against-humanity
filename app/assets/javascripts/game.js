@@ -35,7 +35,7 @@ function makeTemplateMeme() {
 
 function scrollMessages() {
   var el = $(".messages")[0];
-  el.scrollTop = el.scrollHeight;
+  el.scrollTop = el.scrollHeight - el.clientHeight;
 }
 
 function resizeGame() {
@@ -114,4 +114,4 @@ $(window).on("resize", resizeGame);
 $(document).on("turbolinks:load", function() {
   initGame();
   $("#chatbox").keypress(sendMessage);
-})
+});

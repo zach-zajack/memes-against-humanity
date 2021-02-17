@@ -19,8 +19,10 @@ $(document).on "turbolinks:load", ->
       else if data.redirect?
         window.location = "/"
       else if data.message?
-        $(".messages").append(data.message)
-        initGame()
+        el = $(".messages")[0]
+        scroll_down = (el.scrollHeight - el.clientHeight == el.scrollTop)
+        $(el).append(data.message)
+        el.scrollTop = el.scrollHeight - el.clientHeight if scroll_down
       else
         refresh_partials()
 
