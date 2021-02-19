@@ -60,9 +60,11 @@ function resizeGame() {
 
 function selectSource() {
   var slots = $(".placeholder").length
-  var sources = $("[class^='hand-img source']").length;
-  if($(this).is("[class^='hand-img source']")) {
-    $(this).removeClass("source" + sources);
+  var source_sel = "[class^='hand-img source']";
+  var sources = $(source_sel).length;
+  var classname = "source" + sources;
+  if($(this).is(source_sel) && $(this).hasClass(classname)) {
+    $(this).removeClass(classname);
     sources--;
   } else if(sources < slots) {
     $(this).addClass("source" + (sources + 1));
