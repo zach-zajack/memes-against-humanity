@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :player
+  belongs_to :game, -> { with_deleted }
 
   after_create_commit { BroadcastMessageJob.perform_later(player.game, self) }
 
@@ -8,6 +9,10 @@ class Message < ApplicationRecord
 
   def author
     player.name
+  end
+
+  def player
+    Player.unscoped { super }
   end
 
   private
