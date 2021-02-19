@@ -8,6 +8,8 @@ class Meme < ApplicationRecord
 
   validate :source_count_matches_template
   validate :player_submitted_once
+  validate :player_czarnt
+  validate :player_owns_sources
 
   after_create_commit { BroadcastGameJob.perform_later(game, :meme) }
 
@@ -40,8 +42,16 @@ class Meme < ApplicationRecord
   end
 
   def player_submitted_once
-    if player.ready?
-      errors.add(:base, "player has already submitted")
+    errors.add(:base, "player has already submitted") if player.ready?
+  end
+
+  def player_czarnt
+    errors.add(:base, "the czar cannot create a meme") if player.czar?
+  end
+
+  def player_owns_sources
+    if source_ids.any? { |id| player.sources.map(&:id).exclude?(id) }
+      errors.add(:base, "player does not own all of the sources submitted")
     end
   end
 end
