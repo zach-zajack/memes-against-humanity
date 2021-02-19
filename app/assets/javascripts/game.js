@@ -112,6 +112,7 @@ function selectWinner(winner) {
 $(window).on("resize", resizeGame);
 
 $(document).on("turbolinks:load", function() {
+  if($("#game").length == 0) return;
   initGame();
   $("#chatbox").keypress(sendMessage);
 });
