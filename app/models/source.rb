@@ -16,6 +16,7 @@ class Source < ApplicationRecord
   DATA = JSON.parse(S3_BUCKET.object("sources.json").get.body.read)
 
   def generate_source_path
+    game.reload
     self.path = loop do
       index = Random.new.rand(0...DATA.length)
       path = ROOT + DATA[index]
