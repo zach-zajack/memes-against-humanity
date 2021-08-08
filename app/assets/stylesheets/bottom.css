@@ -59,7 +59,7 @@
   filter: none;
 }
 
-.hand-resize {
+.hand-resize, .hand-resize2 {
   position: relative;
   white-space: nowrap;
   display: table;
@@ -72,7 +72,7 @@
 }
 
 .source1 img, .source2 img, .source3 img {
-  box-shadow: 0 0 0 1px var(--select);
+  box-shadow: 0 0 0 1.5px var(--select);
 }
 
 .source1::before, .source2::before, .source3::before {

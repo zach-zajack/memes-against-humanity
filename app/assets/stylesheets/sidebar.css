@@ -15,15 +15,17 @@
   border-bottom: 1px solid var(--border);
   text-align: center;
   line-height: 25px;
+  background: var(--bg2);
 }
 
 .scoreboard table {
+  width: 100%;
   text-align: left;
 }
 
 .scoreboard td:nth-child(1)::after {
-  position: absolute;
-  right: 50px;
+  float: right;
+  margin-right: 20px;
   font-size: 14px;
 }
 
@@ -90,15 +92,35 @@
 }
 
 .buttons {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
   height: 30px;
   padding: 4px;
-  width: calc(100% - 8px);
+  width: 292px;
   border-top: 1px solid var(--border);
+  bottom: 270px;
 }
 
 .buttons button {
   height: 100%;
   width: 100%;
+}
+
+@media only screen and (orientation: portrait) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .scoreboard {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .buttons {
+    width: calc(100% - 8px);
+    background: var(--bg2);
+  }
+
+  #messages, .messages, #chatbox {
+    display: none;
+  }
 }

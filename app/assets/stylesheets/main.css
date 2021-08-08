@@ -20,6 +20,39 @@
   padding-bottom: 8px;
 }
 
+#options {
+  position: fixed;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: 20px;
+  line-height: 30px;
+}
+
+#options label {
+  float: left;
+}
+
+#options input {
+  float: right;
+}
+
+#options input[type="submit"] {
+  float: none;
+}
+
+#options input[type="checkbox"] {
+  width: 28px;
+  height: 28px;
+  margin-left: 20px;
+  appearance: none;
+  color: var(--input-bg);
+  border: 2px solid var(--border);
+}
+
+#options input[type="checkbox"]:checked {
+  -webkit-appearance: revert;
+}
+
 .meme {
   display: inline-block;
   position: relative;
@@ -68,4 +101,16 @@
   width: 100%;
   object-fit: contain;
   background-color: white;
+}
+
+@media only screen and (orientation: portrait) {
+  .main {
+    position: fixed;
+    left: 0;
+    right: 0;
+  }
+
+  .main {
+    overflow-y: auto;
+  }
 }
