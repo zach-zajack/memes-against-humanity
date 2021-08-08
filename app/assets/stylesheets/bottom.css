@@ -44,6 +44,8 @@
 
 .hand-img {
   position: relative;
+  /* fixes flickering between animations */
+  backface-visibility: hidden;
   display: inline-block;
   transition: 0.2s;
   margin: 2px;
