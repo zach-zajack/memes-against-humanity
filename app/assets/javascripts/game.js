@@ -48,10 +48,12 @@ function resizeGame() {
 
   // TODO: really not a fan of this hacky DOM-manipulation garbage,
   //       but I can't think of a better solution right now
-  if (handScale < 1) {
+  if (isMobile()) {
     if($(".hand-resize2").length == 0) {
       $(".hand-resize").after("<div class='hand-resize2'></div>");
     }
+
+    $(".sidebar").after($("#buttons"));
     
     var handWidthTotal = 0;
     $(".hand-resize").children().each(function() {
@@ -96,9 +98,6 @@ function resizeGame() {
     $(".messages").height(mainHeight - $(".scoreboard").outerHeight() - 90);
   }
 
-  var heightRatio = $(".main").height() / $("#main").outerHeight();
-  var widthRatio = $(".main").width() / $("#main").outerWidth();
-  var scale = Math.min(heightRatio, widthRatio);
   var midpoint = ($(".main").width() - $("#main").outerWidth() * scale) / 2
   $("#main").css({ transform: "scale(" + scale + ")", left: midpoint });
 }
@@ -162,6 +161,33 @@ function selectWinner(winner) {
   player.addClass("winner active");
   score.html(parseInt(score.html()) + 1);
 }
+
+function onLeftSwipe() {
+  $(".sidebar")[0].style.setProperty('--sidebar-pos', "0%");
+}
+
+function onRightSwipe() {
+  $(".sidebar")[0].style.setProperty('--sidebar-pos', "100%");
+}
+
+var start = null;
+
+window.addEventListener("touchstart", function(event) {
+  if(event.touches.length == 1) {
+    start = event.touches.item(0).clientX;
+  } else {
+    start = null;
+  }
+});
+
+window.addEventListener("touchend", function(event) {
+  if(start) {
+    var end = event.changedTouches.item(0).clientX;
+    var offset = 100;
+    if(end > start + offset) { onRightSwipe(); }
+    if(end < start - offset) { onLeftSwipe(); }
+  }
+});
 
 $(window).on("resize", resizeGame);
 
