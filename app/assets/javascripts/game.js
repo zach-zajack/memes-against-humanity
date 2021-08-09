@@ -55,19 +55,21 @@ function resizeGame() {
     
     var handWidthTotal = 0;
     $(".hand-resize").children().each(function() {
-      if(handWidthTotal * 2.5 > handWidth) {
+      if(handWidthTotal * 2.3 > handWidth) {
         $(".hand-resize2").append($(this));
       } else {
         handWidthTotal += $(this).width();
       }
       $(".hand-resize").css({ transform: "translateY(-82px)" });
     });
-    handScale = (window.innerWidth - 10) / Math.max(handWidthTotal, handWidth - handWidthTotal);
-    handScale = Math.max(handScale, 1);
-    $(".bottom").height($(".hand-resize").height() * handScale * 2 - 10);
-    $(".hand-resize").css({ transform: "scale(" + handScale + ") translateY(-82px)" });
-    $(".hand-resize2").css({ transform: "translateY(-82px) scale(" + handScale + ")" });
+    handScale  = (window.innerWidth - 30) / handWidthTotal;
+    handScale2 = (window.innerWidth - 10) / (handWidth - handWidthTotal);
+    $(".bottom").height($(".hand-resize").height() * (handScale2 + handScale) - 10);
+    $(".hand-resize").css({ transform: "translateY(-" + (60 * handScale2 + 4) + "px) scale(" + handScale + ")" });
+    $(".hand-resize2").css({ transform: "translateY(-60px) scale(" + handScale2 + ")" });
   } else {
+    $(".sidebar").append($("#buttons"));
+    
     if($(".hand-resize2").length == 1) {
       $(".hand-resize2").children().each(function (i) { $(".hand-resize").append($(this)); });
       $(".hand-resize2").remove();
@@ -82,9 +84,12 @@ function resizeGame() {
   $(".main").height(mainHeight);
   $(".buttons").css({ top: mainHeight });
 
+  var heightRatio = $(".main").height() / $("#main").outerHeight();
+  var widthRatio = $(".main").width() / $("#main").outerWidth();
+  var scale = Math.min(heightRatio, widthRatio);
+
   if(isMobile()) {
-    $(".main").css({ top: $(".scoreboard").outerHeight() + 40 });
-    $(".sidebar").height($(".scoreboard").outerHeight());
+    scale = widthRatio * 0.8;
   } else {
     $(".main").css({ top: 40 });
     $(".sidebar").height(mainHeight);
