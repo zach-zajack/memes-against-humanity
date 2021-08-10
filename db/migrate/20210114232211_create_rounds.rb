@@ -5,6 +5,7 @@ class CreateRounds < ActiveRecord::Migration[5.2]
       t.integer  :czar_id
       t.integer  :winner_id
       t.integer  :template_id
+      t.integer  :shuffle_seed
       t.boolean  :judging, default: false
       t.datetime :deleted_at
       

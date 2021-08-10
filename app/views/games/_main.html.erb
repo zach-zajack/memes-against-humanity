@@ -2,7 +2,7 @@
 <% if display_memes?(current_player) %>
   <%= tag.div(class: memes_classes(current_player)) do %>
     <% if game.active_players.all?(&:ready?) %>
-      <%= render game.round.memes.shuffle %>
+      <%= render game.round.memes.shuffle(random: Random.new(game.round.shuffle_seed)) %>
     <% else %>
       <div class="waiting">Waiting for other players...</div>
     <% end %>

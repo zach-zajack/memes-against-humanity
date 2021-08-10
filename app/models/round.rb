@@ -8,6 +8,7 @@ class Round < ApplicationRecord
 
   before_create :pick_czar
   before_create :generate_template
+  before_create :generate_seed
   after_create_commit { BroadcastGameJob.perform_later(game, :round) }
 
   def czar
@@ -26,5 +27,9 @@ class Round < ApplicationRecord
 
   def generate_template
     self.template = Template.create
+  end
+
+  def generate_seed
+    self.shuffle_seed = Random.new.rand(0...2 << 63)
   end
 end
