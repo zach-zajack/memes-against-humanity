@@ -29,7 +29,7 @@ function makeTemplateMeme() {
   $(".placeholder").map(function() {
     // TODO: store dimensions as a percentage of template in db
     //       instead of calculating it here
-    ratio = 400 / $("img.base").prop("naturalHeight");
+    ratio = 300 / $("img.base").prop("naturalHeight");
     $(this).css("top",    ratio * parseInt($(this).attr("data-y")));
     $(this).css("left",   ratio * parseInt($(this).attr("data-x")));
     $(this).css("height", ratio * parseInt($(this).attr("data-height")));
@@ -57,6 +57,8 @@ function resizeGame() {
     
     var handWidthTotal = 0;
     $(".hand-resize").children().each(function() {
+      // TODO: replace with smarter system that pairs wide source
+      //       with thin sources to minimize blank space
       if(handWidthTotal * 2.3 > handWidth) {
         $(".hand-resize2").append($(this));
       } else {
@@ -88,8 +90,8 @@ function resizeGame() {
 
   var heightRatio = $(".main").height() / $("#main").outerHeight();
   var widthRatio = $(".main").width() / $("#main").outerWidth();
-  var scale = Math.min(heightRatio, widthRatio);
-
+  var scale = Math.abs(1 - heightRatio) < Math.abs(1 - widthRatio) ? heightRatio : widthRatio;
+  
   if(isMobile()) {
     scale = widthRatio * 0.8;
   } else {
@@ -98,7 +100,7 @@ function resizeGame() {
     $(".messages").height(mainHeight - $(".scoreboard").outerHeight() - 90);
   }
 
-  var midpoint = ($(".main").width() - $("#main").outerWidth() * scale) / 2
+  var midpoint = ($(".main").width() - $("#main").outerWidth() * scale) / 2;
   $("#main").css({ transform: "scale(" + scale + ")", left: midpoint });
 }
 

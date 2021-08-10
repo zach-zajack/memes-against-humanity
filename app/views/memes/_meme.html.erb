@@ -1,5 +1,5 @@
 <%= tag.div(class: "meme", data: {meme_id: meme.id}) do %>
-  <%= image_tag(meme.template.base, class: "base", height: 400) %>
+  <%= image_tag(meme.template.base, class: "base", height: 300) %>
   <% meme.template.rects.each.with_index do |rect, i| %>
     <% rect.each do |coords| %>
       <%= tag.div(class: "placeholder", data: coords) do %>
@@ -7,5 +7,5 @@
       <% end %>
     <% end %>
   <% end %>
-  <%= image_tag(meme.template.overlay, class: "overlay", height: 400) if meme.template.overlay? %>
+  <%= image_tag(meme.template.overlay, class: "overlay", height: 300) if meme.template.overlay? %>
 <% end %>

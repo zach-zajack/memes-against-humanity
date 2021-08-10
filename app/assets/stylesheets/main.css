@@ -2,9 +2,10 @@
   position: fixed;
   top: 40px;
   left: 0;
-  right: 320px;
+  right: 300px;
   bottom: 270px;
   padding: 10px;
+  overflow-y: auto;
 }
 
 .waiting {
@@ -108,9 +109,5 @@
     position: fixed;
     left: 0;
     right: 0;
-  }
-
-  .main {
-    overflow-y: auto;
   }
 }
