@@ -43,47 +43,28 @@ function scrollMessages() {
 }
 
 function resizeGame() {
-  var handWidth = $(".hand-resize").width() + $(".hand-resize2").width();
-  var handScale = (window.innerWidth - 10) / handWidth;
+  // Subtract 10px for padding
+  var scaleHand = (window.innerWidth - 10) / $(".hand-resize").width();
 
-  // TODO: really not a fan of this hacky DOM-manipulation garbage,
-  //       but I can't think of a better solution right now
-  if (isMobile()) {
-    if($(".hand-resize2").length == 0) {
-      $(".hand-resize").after("<div class='hand-resize2'></div>");
-    }
-
-    $(".sidebar").after($("#buttons"));
-    
-    var handWidthTotal = 0;
-    $(".hand-resize").children().each(function() {
-      // TODO: replace with smarter system that pairs wide source
-      //       with thin sources to minimize blank space
-      if(handWidthTotal * 2.3 > handWidth) {
-        $(".hand-resize2").append($(this));
-      } else {
-        handWidthTotal += $(this).width();
-      }
-      $(".hand-resize").css({ transform: "translateY(-82px)" });
-    });
-    handScale  = (window.innerWidth - 30) / handWidthTotal;
-    handScale2 = (window.innerWidth - 10) / (handWidth - handWidthTotal);
-    $(".bottom").height($(".hand-resize").height() * (handScale2 + handScale) - 10);
-    $(".hand-resize").css({ transform: "translateY(-" + (60 * handScale2 + 4) + "px) scale(" + handScale + ")" });
-    $(".hand-resize2").css({ transform: "translateY(-60px) scale(" + handScale2 + ")" });
+  if(scaleHand > 1) {
+    $(".hand-resize").css({transform: "scale("+scaleHand+")"});
+    $(".bottom").height($(".hand-resize").height() * scaleHand - 10);
+    $(".hand").css({"overflow": "visible", height: 20});
   } else {
-    $(".sidebar").append($("#buttons"));
-    
-    if($(".hand-resize2").length == 1) {
-      $(".hand-resize2").children().each(function (i) { $(".hand-resize").append($(this)); });
-      $(".hand-resize2").remove();
-    }
-    $(".bottom").height($(".hand-resize").height() * handScale - 10);
-    $(".hand-resize").css({ transform: "scale(" + handScale + ")" });
+    $(".hand").css({"overflow-x": "auto", "overflow-y": "hidden", height: 40});
+    $(".bottom").height($(".hand-resize").height() + 10);
   }
-  
+
   // Subtract 60px for padding (20px) + head (40px)
   var mainHeight = window.innerHeight - $(".bottom").height() - 60;
+  
+  if (isMobile()) {
+    $(".sidebar").after($("#buttons"));
+  } else {
+    $(".sidebar").append($("#buttons"));    
+    $(".sidebar").height(mainHeight);
+    $(".messages").height(mainHeight - $(".scoreboard").outerHeight() - 90);
+  }
 
   $(".main").height(mainHeight);
   $(".buttons").css({ top: mainHeight });
@@ -91,17 +72,8 @@ function resizeGame() {
   var heightRatio = $(".main").height() / $("#main").outerHeight();
   var widthRatio = $(".main").width() / $("#main").outerWidth();
   var scale = Math.abs(1 - heightRatio) < Math.abs(1 - widthRatio) ? heightRatio : widthRatio;
-  
-  if(isMobile()) {
-    scale = widthRatio * 0.8;
-  } else {
-    $(".main").css({ top: 40 });
-    $(".sidebar").height(mainHeight);
-    $(".messages").height(mainHeight - $(".scoreboard").outerHeight() - 90);
-  }
-
-  var midpoint = ($(".main").width() - $("#main").outerWidth() * scale) / 2;
-  $("#main").css({ transform: "scale(" + scale + ")", left: midpoint });
+  var midpoint = ($(".main").width() - $("#main").outerWidth()*scale) / 2
+  $("#main").css({transform: "scale("+scale+")", left: midpoint});
 }
 
 function selectSource() {

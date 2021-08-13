@@ -14,8 +14,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 20px;
-  padding-bottom: 45px;
+  padding-top: 10px;
+  padding-bottom: 86px;
 }
 
 .noclick .hand {
@@ -39,7 +39,6 @@
 .hand img {
   border-radius: 2px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .hand-img {
@@ -55,11 +54,12 @@
 
 .hand-img:hover {
   transform: translateY(-5%);
+  z-index: 1;
   transform-origin: bottom;
   filter: none;
 }
 
-.hand-resize, .hand-resize2 {
+.hand-resize {
   position: relative;
   white-space: nowrap;
   display: table;
@@ -72,7 +72,7 @@
 }
 
 .source1 img, .source2 img, .source3 img {
-  box-shadow: 0 0 0 1px var(--select);
+  box-shadow: 0 0 0 calc(4px - 0.1vw) var(--select);
 }
 
 .source1::before, .source2::before, .source3::before {
@@ -85,7 +85,7 @@
   background: rgba(0, 0, 0, 0.7);
   width: 1em;
   text-align: center;
-  font-size: 12px;
+  font-size: calc(25px - 0.2vw);  
 }
 
 .source1::before {
