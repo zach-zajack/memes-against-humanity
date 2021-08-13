@@ -19,6 +19,10 @@ class Round < ApplicationRecord
     Player.find_by(id: winner_id)
   end
 
+  def memes_shuffled
+    memes.shuffle(random: Random.new(self.shuffle_seed))
+  end
+
   private
 
   def pick_czar
@@ -30,6 +34,6 @@ class Round < ApplicationRecord
   end
 
   def generate_seed
-    self.shuffle_seed = Random.new.rand(0...2 << 63)
+    self.shuffle_seed = Random.new.rand(0...1 << 63)
   end
 end
