@@ -52,11 +52,15 @@ class Game < ApplicationRecord
   end
 
   def round
-    rounds.last
+    ordered_rounds.last
   end
 
   def prev_round
-    rounds[-2]
+    ordered_rounds.second_to_last
+  end
+
+  def ordered_rounds
+    rounds.order("created_at ASC")
   end
 
   def master
