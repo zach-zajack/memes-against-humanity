@@ -34,6 +34,6 @@ class Round < ApplicationRecord
   end
 
   def generate_seed
-    self.shuffle_seed = Random.new.rand(0...1 << 63)
+    self.shuffle_seed = Random.new.rand(0..0x7FFF_FFFF)
   end
 end
