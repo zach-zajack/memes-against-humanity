@@ -15,9 +15,20 @@ class PlayerSession < ApplicationSystemTestCase
     end
   end
 
-  def join
+  def create_game
     as(name) do
-      visit $path
+      visit root_path
+      fill_in "name", with: name
+      click_on "Create game"
+      find("#game")
+      fill_in "max_score", with: 3
+    end
+  end
+
+  def join
+    path = current_url
+    as(name) do
+      visit path
       fill_in "name", with: name
       click_on "Join"
       find("#game")
@@ -45,16 +56,15 @@ end
 
 class FullGameTest < ApplicationSystemTestCase
   test "full game" do
-    @players = [PlayerSession.new("Alice"), PlayerSession.new("Bob"), PlayerSession.new("Jen")]
+    players = [
+      PlayerSession.new("Alice"),
+      PlayerSession.new("Bob"),
+      PlayerSession.new("Jen")
+    ]
 
-    visit root_path
-    fill_in "name", with: @players[0].name
-    click_on "Create game"
-    find("#game")
-    fill_in "max_score", with: 3
-    $path = current_url
-
-    @players[1..-1].each(&:join)
+    master = players.first
+    master.create_game
+    players.excluding(master).each(&:join)
 
     click_on "Start"
     
@@ -62,8 +72,8 @@ class FullGameTest < ApplicationSystemTestCase
     round = 0
     
     until has_css?("#options") do
-      czar = @players[round % @players.count]
-      @players.excluding(czar).each(&:play_hand)
+      czar = players[round % players.count]
+      players.excluding(czar).each(&:play_hand)
       
       czar.select_meme
       sleep 3
